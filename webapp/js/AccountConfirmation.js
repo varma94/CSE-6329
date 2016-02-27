@@ -1,0 +1,2 @@
+$("#accordion").accordion({heightStyle: "content"});
+
