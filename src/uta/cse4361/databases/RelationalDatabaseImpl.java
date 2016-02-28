@@ -10,6 +10,7 @@ import java.util.Date;
 
 import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.StudentAccount;
+import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
 
@@ -113,6 +114,13 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
      @Override
     public String studentRegister(StudentAccount sa){
         RDBImplCommand studentRegister = new StudentAdvisor(sa);
+        studentRegister.execute();
+        return (String)studentRegister.getResult();
+    }
+    
+     @Override
+    public String studentPasswordChange(StudentPasswordAccount sa){
+        RDBImplCommand studentRegister = new StudentPasswordAdvisor(sa);
         studentRegister.execute();
         return (String)studentRegister.getResult();
     }

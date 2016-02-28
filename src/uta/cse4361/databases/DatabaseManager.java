@@ -13,6 +13,7 @@ import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.SlotFactory;
 import uta.cse4361.businessobjects.AdvisorAccount;
+import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.StudentAccount;
 
 /**
@@ -93,6 +94,10 @@ public class DatabaseManager {
     
     public String studentRegister(StudentAccount sa){
         return imp.studentRegister(sa);
+    }
+    
+    public String studentPasswordChange(StudentPasswordAccount sa){
+        return imp.studentPasswordChange(sa);
     }
     
     

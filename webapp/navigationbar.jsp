@@ -44,6 +44,9 @@
                 out.print("<li class='account'>"
                         + "<a href='studentAccountEdit.jsp' >Edit Account</a>"
                         + "</li>");
+                out.print("<li class='account'>"
+                        + "<a href='PasswordManagement.jsp' >Password Change</a>"
+                        + "</li>");
             }
             
             if (rank == 0 || rank == 1){
