@@ -123,4 +123,8 @@ public class DatabaseManager {
     {
         return imp.studentValidate(studentEmail, studentPassword);
     }
+    
+    public ArrayList<String> getAdvisingTypes(){
+        return imp.getAppointmentTypes();
+    }
 }

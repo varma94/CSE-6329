@@ -221,11 +221,12 @@
                     <div class="form-group">
                         <label for="type">Advising Type</label>
                         <select name="type" id="type" class="form-control">
-                            <option value="New Student">New Student</option>
-                            <option value="Returning Student">Returning Student</option>
-                            <option value="Drop Course">Drop Course</option>
-                            <option value="Enroll">Enroll</option>
-                            <option value="Others">Others</option>
+                            <%
+                                java.util.ArrayList<String> advisingTypes = dm.getAdvisingTypes();
+                                for (String type : advisingTypes){ 
+                                    out.print("<option value='" + type + "'>" + type + "</option>");
+                                }
+                                %>
                         </select>
                     </div>
                     <div class="form-group">

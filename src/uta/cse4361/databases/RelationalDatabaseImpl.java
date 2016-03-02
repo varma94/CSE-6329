@@ -177,4 +177,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         validate.execute();
         return (String)validate.getResult();
     }
+    
+    @Override
+    public ArrayList<String> getAppointmentTypes(){
+        RDBImplCommand getAdvisingTypes = new GetAppointmentTypes();
+        getAdvisingTypes.execute();
+        return (ArrayList<String>)getAdvisingTypes.getResult();
+    }
 }
