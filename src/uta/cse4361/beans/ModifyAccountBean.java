@@ -7,7 +7,7 @@ package uta.cse4361.beans;
 
 import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.interfaces.Constants;
-import uta.cse4361.businessobjects.StudentAccount;
+import uta.cse4361.businessobjects.AdvisorAccount;
 
 /**
  *
@@ -28,7 +28,7 @@ public class ModifyAccountBean implements Constants{
     
     public String modifyAccount(){
         String returnMessage = SUCCESS_MESSAGE;
-        StudentAccount acct = new StudentAccount();
+        AdvisorAccount acct = new AdvisorAccount();
         DatabaseManager databaseManager = new DatabaseManager();
         boolean result = false;
         
@@ -37,10 +37,10 @@ public class ModifyAccountBean implements Constants{
         } else {
             result = acct.initialize(this.name, this.email, this.department, this.ID, this.rank);
             if (result == true){
-                returnMessage = databaseManager.studentModifyAccount(this.email, acct);
+                returnMessage = databaseManager.modifyAccount(this.ID, acct);
             }else 
             {
-                returnMessage = "modify fail";
+                returnMessage = MODIFY_ACCOUNT_FAIL;
             }
             
         }
