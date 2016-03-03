@@ -88,7 +88,7 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                   <input type="submit" value="Modify Account" id="submitBtn" class="btn btn-default" class="btn btn-default">
+                                   <input type="submit" value="Modify Account" id="submitBtn" class="btn btn-default" >
                                    <button type="button" value="Create Account" id="createActBtn" 
                                            class ="btn btn-default" onclick="window.location.href='CreateAccount.jsp';" >Create Account</button>
                                 </form>
