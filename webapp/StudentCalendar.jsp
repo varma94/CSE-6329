@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
+<%@page import="uta.cse4361.businessobjects.AppointmentType" %>
+<%@page import="uta.cse4361.businessobjects.AdvisorAccount" %>
 
 <html>
     <head>
@@ -50,7 +52,16 @@
             
             
             DatabaseManager dm = new DatabaseManager();
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();
+            
+            int typeID = Integer.parseInt(request.getParameter("typeID"));
+           AppointmentType type = dm.getAppointmentType(typeID);
+           String typeName = type.getName();
+           
+           int advisorID = Integer.parseInt(request.getParameter("advisorID"));
+           AdvisorAccount acct = dm.getAdvisor(advisorID);
+           String advisorName = acct.getName();
+            
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots(advisorID, typeID);
   
            int fwsize= fw.size();
           
@@ -84,6 +95,8 @@
            String desc = request.getParameter("description");
            
            boolean timeSubmitted =  !(request.getParameter("startTime")==null || request.getParameter("startTime")=="");
+           
+                                
         %>
         
         
@@ -94,8 +107,8 @@
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="studentMajor" param="major" /> 
-        <jsp:setProperty name="newAppt" property="advisorName" param="aName" /> 
-        <jsp:setProperty name="newAppt" property="type" param="type" /> 
+        <jsp:setProperty name="newAppt" property="advisorName" value='<%= advisorName%>' />
+        <jsp:setProperty name="newAppt" property="type" value='<%= typeName%>' /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
         <% if(timeSubmitted){ %>
@@ -103,6 +116,8 @@
         <jsp:setProperty name="newAppt" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
         <jsp:setProperty name="newAppt" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
         <jsp:setProperty name="newAppt" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
+        <jsp:setProperty name="newAppt" property="typeID" value= '<%= Integer.parseInt(request.getParameter("typeID")) %>'/>
+        <jsp:setProperty name="newAppt" property="advisorID" value= '<%= Integer.parseInt(request.getParameter("advisorID")) %>'/>
         <%}%>
         <title>Advising Calendar</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
@@ -141,11 +156,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="aName">Advisor</label>
-                                        <input class="form-control" type="text" name="aName" id="aName" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly">
+                                        <input class="form-control" type="text" name="aName" id="aName" value="<%= advisorName %>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="type">Advising Type</label>
-                                        <input type="text" name="type" id="type" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly">
+                                        <input type="text" name="type" id="type" value="<%= typeName %>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Date</label>
@@ -163,6 +178,8 @@
                                             <label for="description">Description</label> 
                                         <textarea class="form-control" name="description" id="description" value="" readonly="readonly"></textarea>
                                         </div>
+                                        <input type="hidden" id="typeID" name="typeID" value="<%= typeID%>" />
+                                        <input type="hidden" id="advisorID" name="advisorID" value="<%= advisorID%>" />
                                         <input type="submit" value="Make Appointment" id="submitBtn" class="btn btn-default">
                                     </form>
                                     <!--  <%@page import="java.io.*,java.util.*,javax.mail.*"%>

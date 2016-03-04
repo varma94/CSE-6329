@@ -41,21 +41,32 @@ INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank)
 VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'CSE', 1),
 ('test@test.edu', '3556498', 'Test', 'CSE', 1);
 
-CREATE VIEW APPTFW AS
+CREATE OR REPLACE VIEW APPTFW AS
 SELECT ApptID, ApptDate, ApptStartHour, ApptStartMin, ApptEndHour, ApptEndMin
 From APPOINTMENT
 ORDER BY ApptDate;
 
-CREATE VIEW APPTSLOT AS
+CREATE OR REPLACE VIEW APPTSLOT AS
 SELECT SLOT.*, APPTFW.ApptID
 FROM SLOT, APPTFW
-WHERE(SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour <> APPTFW.ApptEndHour AND SLOT.SlotStartHour = APPTFW.ApptStartHour AND SLOT.SlotStartMin >= APPTFW.ApptStartMin)
-OR (SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour > APPTFW.ApptStartHour AND SLOT.SlotStartHour < APPTFW.ApptEndHour)
-OR (SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour <> APPTFW.ApptStartHour AND SLOT.SlotStartHour = APPTFW.ApptEndHour AND SLOT.SlotStartMin < APPTFW.ApptEndMin)
-OR (SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour = APPTFW.ApptStartHour AND SLOT.SlotStartHour = APPTFW.ApptEndHour AND SLOT.SlotStartMin >= APPTFW.ApptStartMin AND SLOT.SlotStartMin < APPTFW.ApptEndMin);
+WHERE(SLOT.SlotDate = APPTFW.ApptDate 
+AND SLOT.SlotStartHour <> APPTFW.ApptEndHour 
+AND SLOT.SlotStartHour = APPTFW.ApptStartHour 
+AND SLOT.SlotStartMin >= APPTFW.ApptStartMin)
+
+OR (SLOT.SlotDate = APPTFW.ApptDate 
+AND SLOT.SlotStartHour > APPTFW.ApptStartHour 
+AND SLOT.SlotStartHour < APPTFW.ApptEndHour)
+
+OR (SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour <> APPTFW.ApptStartHour 
+AND SLOT.SlotStartHour = APPTFW.ApptEndHour AND SLOT.SlotStartMin < APPTFW.ApptEndMin)
+
+OR (SLOT.SlotDate = APPTFW.ApptDate AND SLOT.SlotStartHour = APPTFW.ApptStartHour 
+AND SLOT.SlotStartHour = APPTFW.ApptEndHour AND SLOT.SlotStartMin >= APPTFW.ApptStartMin 
+AND SLOT.SlotStartMin < APPTFW.ApptEndMin);
 
 
-CREATE VIEW AVAILSLOT AS 
+CREATE OR REPLACE VIEW AVAILSLOT AS 
 SELECT * FROM SLOT WHERE SlotID
 NOT IN (SELECT SlotID FROM APPTSLOT);
 

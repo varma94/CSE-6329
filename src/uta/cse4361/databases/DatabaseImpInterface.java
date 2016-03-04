@@ -44,5 +44,8 @@ public interface DatabaseImpInterface {
     public String modifyAppointmentType(int id, String name);
     public String createAptType(String name);
     public ArrayList<AdvisorAccount> getAdvisors();
+    public AdvisorAccount getAdvisor(int id);
+    public ArrayList<Slot> getAvailSlots(int advisorID, int apptType);
+    public ArrayList<Slot> getApptSlots(int advisorID, int apptType);
     
 }

@@ -84,6 +84,14 @@ public class DatabaseManager {
         Collections.sort(avail);
         return avail;
     }
+    
+    public ArrayList<Slot> getTypeSlots(int advisorID, int apptTypeID){
+        ArrayList<Slot> avail = imp.getAvailSlots(advisorID, apptTypeID);
+        ArrayList<Slot> appt = imp.getApptSlots(advisorID, apptTypeID);
+        avail.addAll(appt);
+        Collections.sort(avail);
+        return avail;
+    }
     public ArrayList<Slot> getAvailableSlots() {
          return imp.getAvailSlots();
      }
@@ -150,5 +158,9 @@ public class DatabaseManager {
     
     public ArrayList<AdvisorAccount> getAdvisors(){
         return imp.getAdvisors();
+    }
+    
+    public AdvisorAccount getAdvisor(int id){
+        return imp.getAdvisor(id);
     }
 }

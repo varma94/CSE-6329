@@ -212,8 +212,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="aName">Advisor</label>
-                        <select name="aName" id="aName" class="form-control" >
+                        <label for="advisorID">Advisor</label>
+                        <select name="advisorID" id="advisorID" class="form-control" >
                             <%
                                 java.util.ArrayList<AdvisorAccount> advisors = dm.getAdvisors();
                                 for (AdvisorAccount acct : advisors){ 
@@ -223,8 +223,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="type">Advising Type</label>
-                        <select name="type" id="type" class="form-control">
+                        <label for="typeID">Advising Type</label>
+                        <select name="typeID" id="typeID" class="form-control">
                                 <%
                                     java.util.ArrayList<AppointmentType> advisingTypes = dm.getAppointmentTypesObj();
                                     for (AppointmentType type : advisingTypes){ 

@@ -14,16 +14,27 @@ import uta.cse4361.businessobjects.AdvisorAccount;
  */
 public class GetAdvisor extends RDBImplCommand{
     private String email;
+    private int id;
     private String sqlQuery = "SELECT * FROM USER WHERE UserEmail = ?";
     
     public GetAdvisor(String email){
         this.email = email;
     }
     
+    public GetAdvisor(int id){
+        this.id=id;
+        this.email = null;
+        sqlQuery = "SELECT * FROM USER WHERE UserID = ?";
+    }
+    
     public void queryDB() throws SQLException{
         try{
             statement = conn.prepareStatement(sqlQuery);
-            statement.setString(1, email);
+            if (email == null){
+                statement.setInt(1, id);
+            } else {
+                statement.setString(1, email);
+            }
             resultSet = statement.executeQuery();
             processResult();
         }

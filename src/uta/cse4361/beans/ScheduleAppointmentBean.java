@@ -33,6 +33,8 @@ public class ScheduleAppointmentBean implements Constants {
     private int endHour = 0;
     private int endMinute = 0;
     private Date date = null;
+    private int typeID;
+    private int advisorID;
 
     public ScheduleAppointmentBean() {
 
@@ -135,9 +137,17 @@ public class ScheduleAppointmentBean implements Constants {
     public void setAdvisorName(String aName) {
         this.advisorName = aName;
     }
+    
+    public void setAdvisorID(int id){
+        this.advisorID = id;
+    }
 
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public void setTypeID(int id){
+        this.typeID = id;
     }
 
     public void setDescription(String dp) {
@@ -183,9 +193,17 @@ public class ScheduleAppointmentBean implements Constants {
     public String getType() {
         return this.type;
     }
+    
+    public int getTypeID(){
+        return this.typeID;
+    }
 
     public String getAdvisorName() {
         return this.advisorName;
+    }
+    
+    public int getAdvisorID(){
+        return this.advisorID;
     }
 
     public String getDescription() {

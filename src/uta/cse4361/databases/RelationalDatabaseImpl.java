@@ -99,6 +99,20 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
     
     @Override
+    public ArrayList<Slot> getApptSlots(int advisorID, int apptType){
+        RDBImplCommand getApptSlot = new GetApptSlots(advisorID, apptType);
+        getApptSlot.execute();
+        return(ArrayList<Slot>)getApptSlot.getResult();
+    }
+    
+    @Override
+    public ArrayList<Slot> getAvailSlots(int advisorID, int apptType){
+        RDBImplCommand getAvailSlot = new GetAvailSlots(advisorID, apptType);
+        getAvailSlot.execute();
+        return(ArrayList<Slot>)getAvailSlot.getResult();
+    }
+    
+    @Override
     public ArrayList<Slot> getAvailSlotsByTime(Date d, int startHour, int endHour, int startMin, int endMin){
         RDBImplCommand getAvailSlot = new GetAvailSlotsByTime(d, startHour, endHour, startMin, endMin);
         getAvailSlot.execute();
@@ -226,5 +240,13 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         RDBImplCommand getAdvisors = new GetAdvisors();
         getAdvisors.execute();
         return (ArrayList<AdvisorAccount>)getAdvisors.getResult();
+    }
+    
+    @Override
+    public AdvisorAccount getAdvisor(int id){
+        RDBImplCommand getAdvisor = new GetAdvisor(id);
+        getAdvisor.execute();
+        return (AdvisorAccount)getAdvisor.getResult();
+                
     }
 }

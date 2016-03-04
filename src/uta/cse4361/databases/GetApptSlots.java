@@ -17,12 +17,23 @@ import uta.cse4361.businessobjects.Slot;
 public class GetApptSlots extends RDBImplCommand{
     
     String sqlQuery = "SELECT * FROM APPTSLOT";
+    private int apptType = -1;
+    private int advisorID = -1;
     
     public GetApptSlots(){}
+    public GetApptSlots(int advisorID, int apptType){
+        this.apptType = apptType;
+        this.advisorID = advisorID;
+        sqlQuery = "SELECT * FROM APPTSLOT WHERE advisorID = ? AND appointmentTypeID = ?";
+    }
     
     public void queryDB() throws SQLException{
         try {
             statement = conn.prepareStatement(sqlQuery);
+            if (advisorID != -1){
+                statement.setInt(1, advisorID);
+                statement.setInt(2, apptType);
+            }
             resultSet = statement.executeQuery();
             processResult();
         } catch (SQLException e) {

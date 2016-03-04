@@ -15,14 +15,26 @@ import uta.cse4361.businessobjects.Slot;
  * @author Andrew
  */
 public class GetAvailSlots extends RDBImplCommand{
-    
+    private int advisorID =-1;
+    private int apptType = -1;
     String sqlQuery = "SELECT * FROM AVAILSLOT";
     
     public GetAvailSlots(){}
     
+    public GetAvailSlots(int advisorID, int apptType){
+        this.advisorID = advisorID;
+        this.apptType = apptType;
+        sqlQuery = "SELECT * FROM AVAILSLOT WHERE advisorID = ? AND appointmentTypeID = ?";
+    }
+    
     public void queryDB() throws SQLException{
         try {
             statement = conn.prepareStatement(sqlQuery);
+            if (advisorID != -1){
+                statement.setInt(1, advisorID);
+                statement.setInt(2, apptType);
+            }
+            
             resultSet = statement.executeQuery();
             processResult();
         } catch (SQLException e) {
