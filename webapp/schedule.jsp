@@ -195,10 +195,6 @@
                         <input type="text"  name="email" id="email" value="" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="sID">Student ID</label>
-                        <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value="" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="sName">Student Name</label>
                         <input type="text" name="sName" id="sName" value="" class="form-control">
                     </div>
