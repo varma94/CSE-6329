@@ -24,13 +24,17 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
     private Date date;
     
     private int time;
+    private int advisorID;
+    private int appTypeID;
     
-    public Slot(boolean newHasAppointment, int newAppointmentId, Date newDate, int newHour, int newMinute)
+    public Slot(boolean newHasAppointment, int newAppointmentId, Date newDate, int newHour, int newMinute, int appTypeID, int advisorID)
             throws IllegalArgumentException
     {
         hasAppointment = newHasAppointment;
         id = newAppointmentId;
         date = newDate;
+        this.appTypeID = appTypeID;
+        this.advisorID = advisorID;
         
         boolean validTime = this.setTime(newHour, newMinute);
         

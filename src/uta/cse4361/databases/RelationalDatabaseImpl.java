@@ -220,4 +220,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         createAptType.execute();
         return (String)createAptType.getResult();
     }
+    
+    @Override
+    public ArrayList<AdvisorAccount> getAdvisors(){
+        RDBImplCommand getAdvisors = new GetAdvisors();
+        getAdvisors.execute();
+        return (ArrayList<AdvisorAccount>)getAdvisors.getResult();
+    }
 }

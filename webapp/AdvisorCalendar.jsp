@@ -6,6 +6,7 @@
 
 <%@page import="java.util.Date"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
+<%@page import="uta.cse4361.businessobjects.AppointmentType" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -147,7 +148,12 @@
                                 boolean startSubmitted = !(request.getParameter("startTime") == null || request.getParameter("startTime") == "");
                                 boolean endSubmitted = !(request.getParameter("endTime") == null || request.getParameter("endTime") == "");
                                 boolean formSubmitted = dateSubmitted || startSubmitted || endSubmitted;
-                                boolean validFormSubmitted = dateSubmitted && startSubmitted && endSubmitted;%>
+                                boolean validFormSubmitted = dateSubmitted && startSubmitted && endSubmitted;
+                                if (validFormSubmitted){
+                                    int advisingType = Integer.parseInt(request.getParameter("advisingType"));
+                                }
+                            %>
+                                
 
                             <h3>Allocate Time</h3>
                             <div>
@@ -171,6 +177,17 @@
                                     <input class="form-control" type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted) {
                                                     out.println(" value=\"" + request.getParameter("endTime") + "\"");
                                                 }%>>
+                                    </div>
+                                    <div class ="form-group">
+                                        <label for="advisingType">Advising Type</label>
+                                        <select class ="form-control" name="advisingType" id="advisingType">
+                                            <%
+                                                java.util.ArrayList<AppointmentType> advisingTypes = dm.getAppointmentTypesObj();
+                                                for (AppointmentType type : advisingTypes){ 
+                                                    out.print("<option value='" + type.getID() + "'>" + type.getName() + "</option>");
+                                                }
+                                            %>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="numbers">Number of Repeats</label>
@@ -197,6 +214,9 @@
                                 <jsp:setProperty name="allocateTimeBean" property="startMinute" value= '<%= getMin(request.getParameter("startTime"))%>'/>
                                 <jsp:setProperty name="allocateTimeBean" property="endHour" value= '<%= getHour(request.getParameter("endTime"))%>'/>
                                 <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime"))%>'/>
+                                <jsp:setProperty name="allocateTimeBean" property="advisingType" value= '<%= Integer.parseInt(request.getParameter("advisingType"))%>'/>
+                                <jsp:setProperty name="allocateTimeBean" property="advisor" value= '<%= sessionid %>'/>
+                                
                                 <%
                                     String r = request.getParameter("numbers");
                                     int times = Integer.parseInt(r);

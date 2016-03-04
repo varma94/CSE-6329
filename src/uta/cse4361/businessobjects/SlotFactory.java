@@ -57,7 +57,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
     }
     
     
-    public ArrayList<Slot> generateSlots(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key)
+    public ArrayList<Slot> generateSlots(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key, int appTypeID, int advisorID)
     {
         if(isValidTime(startHour, endHour, startMinute, endMinute))
         {
@@ -66,7 +66,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
         
         int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
         
-        ArrayList<Slot> flyweightsToReturn = new ArrayList<Slot>();
+        ArrayList<Slot> flyweightsToReturn = new ArrayList<>();
         
         nextHour = startHour;
         nextMinute = startMinute;
@@ -78,7 +78,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
             {
                 try
                 {
-                    flyweightsToReturn.add(new AppointmentSlot(apptId, date, nextHour, nextMinute));
+                    flyweightsToReturn.add(new AppointmentSlot(apptId, date, nextHour, nextMinute, appTypeID, advisorID));
                 }
                 catch (IllegalArgumentException e)
                 {
@@ -93,7 +93,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
             {
                 try
                 {
-                    flyweightsToReturn.add(new AvailableSlot(date, nextHour, nextMinute, 0));
+                    flyweightsToReturn.add(new AvailableSlot(date, nextHour, nextMinute, 0, appTypeID, advisorID));
                 }
                 catch (IllegalArgumentException e)
                 {

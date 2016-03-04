@@ -8,6 +8,9 @@
 <%@page import="java.util.Date"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page import="uta.cse4361.businessobjects.Slot"%>
+<%@page import="uta.cse4361.businessobjects.AdvisorAccount"%>
+<%@page import="uta.cse4361.businessobjects.AppointmentType" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -211,21 +214,22 @@
                     <div class="form-group">
                         <label for="aName">Advisor</label>
                         <select name="aName" id="aName" class="form-control" >
-                            <option value="Linda Barasch">Linda Barasch</option>
-                            <option value="Bob Weems">Bob Weems</option>
-                            <option value="Eric Becker">Eric Becker</option>
-                            <option value="Ramez Elmasri">Ramez Elmasri</option>
-                            <option value="Bahram Khalili">Bahram Khalili</option>
+                            <%
+                                java.util.ArrayList<AdvisorAccount> advisors = dm.getAdvisors();
+                                for (AdvisorAccount acct : advisors){ 
+                                    out.print("<option value='" + acct.getID() + "'>" + acct.getName() + "</option>");
+                                }
+                                %>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="type">Advising Type</label>
                         <select name="type" id="type" class="form-control">
-                            <%
-                                java.util.ArrayList<String> advisingTypes = dm.getAdvisingTypes();
-                                for (String type : advisingTypes){ 
-                                    out.print("<option value='" + type + "'>" + type + "</option>");
-                                }
+                                <%
+                                    java.util.ArrayList<AppointmentType> advisingTypes = dm.getAppointmentTypesObj();
+                                    for (AppointmentType type : advisingTypes){ 
+                                        out.print("<option value='" + type.getID() + "'>" + type.getName() + "</option>");
+                                    }
                                 %>
                         </select>
                     </div>

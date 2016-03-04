@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class AvailableSlot extends Slot{
     
-    public AvailableSlot(Date newDate, int newHour, int newMinute, int slotId) throws IllegalArgumentException
+    public AvailableSlot(Date newDate, int newHour, int newMinute, int slotId, int appTypeID, int advisorID) throws IllegalArgumentException
     {
-        super(false, slotId, newDate, newHour, newMinute);
+        super(false, slotId, newDate, newHour, newMinute, appTypeID, advisorID);
  
     }
     

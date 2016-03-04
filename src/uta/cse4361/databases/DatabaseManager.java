@@ -148,4 +148,8 @@ public class DatabaseManager {
     public String createAptType(String name) {
         return imp.createAptType(name);
     }
+    
+    public ArrayList<AdvisorAccount> getAdvisors(){
+        return imp.getAdvisors();
+    }
 }

@@ -50,8 +50,9 @@ and open the template in the editor.
                                         + " <input type='submit' value='Login to your account' id='loginBtn' class='btn btn-default'>"
                                         );
                                  out.print("<li class='account'>"
-                        + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
-                        + "</li>");
+                                    + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
+                                    + "</li>");
+                                 out.print("<a href='testmail.jsp'>Test Mail </a> ");
                             }
                             if (rank == 1){
                                 out.print("Welcome administrator.");
