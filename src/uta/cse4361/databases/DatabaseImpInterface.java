@@ -42,5 +42,6 @@ public interface DatabaseImpInterface {
     public AppointmentType getAppointmentType(int id);
     public String deleteAppointmentType(int id);
     public String modifyAppointmentType(int id, String name);
+    public String createAptType(String name);
     
 }

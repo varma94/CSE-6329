@@ -144,4 +144,8 @@ public class DatabaseManager {
     public String modifyAppointmentType(int id, String name){
         return imp.modifyAppointmentType(id, name);
     }
+
+    public String createAptType(String name) {
+        return imp.createAptType(name);
+    }
 }

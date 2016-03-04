@@ -74,9 +74,9 @@
                                 </table>
                                 <br>
                                    <input type="submit" value="Modify Appointment Type" id="submitBtn" class="btn btn-default" >
-                                   <button type="button" value="Create Appointment Type" id="createActBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='CreateAppointmentType.jsp';" >Create Appointment Type</button>
+                                   
                                 </form>
+                                    <input type='submit' value='Create New Appointment Type' id='newAptTypeBtn' class='btn btn-default'>
                             </div>
 
                     </div>                   
@@ -84,4 +84,5 @@
     <jsp:include page="footer.jsp" />                            
     </body>
     <script type="text/javascript" src="js/modifyAppointment.js"></script>
+    <script type='text/javascript' src='js/createAptType.js'></script>
 </html>

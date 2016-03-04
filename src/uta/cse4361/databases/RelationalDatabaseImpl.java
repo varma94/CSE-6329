@@ -213,4 +213,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         modifyAppointmentType.execute();
         return (String)modifyAppointmentType.getResult();
     }
+
+    @Override
+    public String createAptType(String name) {
+        RDBImplCommand createAptType = new CreateAptType(name);
+        createAptType.execute();
+        return (String)createAptType.getResult();
+    }
 }
