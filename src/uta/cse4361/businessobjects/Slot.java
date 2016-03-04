@@ -18,11 +18,8 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
     
     
     private int id;
-    
     private boolean hasAppointment;
-    
     private Date date;
-    
     private int time;
     private int advisorID;
     private int appTypeID;
@@ -121,5 +118,13 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
             compare = this.getTime() - toCompare.getTime();
         }
         return compare;
+    }
+
+    public int getAdvisorID() {
+        return advisorID;
+    }
+    
+    public int getAppTypeID(){
+        return appTypeID;
     }
 }

@@ -41,7 +41,9 @@ public class GetApptSlots extends RDBImplCommand{
                 int startHour = resultSet.getInt(3);
                 int startMin = resultSet.getInt(4);
                 int id = resultSet.getInt(5);
-                Slot s = new AppointmentSlot(id, d, startHour, startMin);
+                int appTypeID = resultSet.getInt("appointmentTypeID");
+                int advisorID = resultSet.getInt("advisorID");
+                Slot s = new AppointmentSlot(id, d, startHour, startMin, appTypeID, advisorID);
                 ((ArrayList<Slot>) result).add(s);
             }
         } catch (SQLException e) {

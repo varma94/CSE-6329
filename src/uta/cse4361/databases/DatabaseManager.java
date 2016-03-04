@@ -6,7 +6,6 @@
 package uta.cse4361.databases;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;

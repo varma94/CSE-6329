@@ -40,7 +40,9 @@ public class GetSlot extends RDBImplCommand{
                 java.util.Date d = new java.util.Date(((java.sql.Date)resultSet.getDate(2)).getTime());
                 int startHour = resultSet.getInt(3);
                 int startMin = resultSet.getInt(4);
-                Slot s = new AvailableSlot(d, startHour, startMin, id);
+                int appTypeID = resultSet.getInt("appointmentTypeID");
+                int advisorID = resultSet.getInt("advisorID");
+                Slot s = new AvailableSlot(d, startHour, startMin, id, appTypeID, advisorID);
                 ((ArrayList<Slot>) result).add(s);
             }
         } catch (SQLException e) {

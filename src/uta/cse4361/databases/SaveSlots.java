@@ -15,7 +15,7 @@ import uta.cse4361.businessobjects.Slot;
 
 public class SaveSlots extends RDBImplCommand {
     ArrayList<Slot> slots;
-    String sqlQuery = "INSERT INTO SLOT (SlotDate, SlotStartHour, SlotStartMin) VALUES (?, ?, ?)";
+    String sqlQuery = "INSERT INTO SLOT (SlotDate, SlotStartHour, SlotStartMin, appointmentTypeID, advisorID) VALUES (?, ?, ?, ?, ?)";
     
     public SaveSlots(ArrayList<Slot> slots){
         this.slots = slots;
@@ -24,11 +24,13 @@ public class SaveSlots extends RDBImplCommand {
     public void queryDB() throws SQLException{
         try{
             statement = conn.prepareStatement(sqlQuery,  new String[]{"SlotID"});
-            result = new ArrayList<Integer>();
+            result = new ArrayList<>();
             for(Slot s: slots){
                 statement.setDate(1, new java.sql.Date(s.getDate().getTime()));
                 statement.setInt(2, (s.getTime()/60));
                 statement.setInt(3, (s.getTime()%60));
+                statement.setInt(4, s.getAppTypeID());
+                statement.setInt(5, s.getAdvisorID());
                 statement.executeUpdate();
                 resultSet = statement.getGeneratedKeys();
                 if(resultSet.next() == true){

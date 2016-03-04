@@ -7,7 +7,6 @@ package uta.cse4361.businessobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
-import uta.cse4361.databases.DatabaseManager;
 
 /**
  *
