@@ -12,6 +12,7 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.StudentAccount;
 import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.Appointment;
+import uta.cse4361.businessobjects.AppointmentType;
 import uta.cse4361.businessobjects.Slot;
 
 /**
@@ -183,5 +184,33 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         RDBImplCommand getAdvisingTypes = new GetAppointmentTypes();
         getAdvisingTypes.execute();
         return (ArrayList<String>)getAdvisingTypes.getResult();
+    }
+    
+    @Override
+    public ArrayList<uta.cse4361.businessobjects.AppointmentType> getAppointmentTypesObjs(){
+        RDBImplCommand getAppointmentTypes = new GetAppointmentTypesObjs();
+        getAppointmentTypes.execute();
+        return (ArrayList<AppointmentType>)getAppointmentTypes.getResult();
+    }
+
+    @Override
+    public AppointmentType getAppointmentType(int id) {
+        RDBImplCommand getAppointmentType = new GetAppointmentType(id);
+        getAppointmentType.execute();
+        return (AppointmentType)getAppointmentType.getResult();
+    }
+
+    @Override
+    public String deleteAppointmentType(int id) {
+        RDBImplCommand deleteAppointmentType = new DeleteAppointmentType(id);
+        deleteAppointmentType.execute();
+        return (String)deleteAppointmentType.getResult();
+    }
+
+    @Override
+    public String modifyAppointmentType(int id, String name) {
+        RDBImplCommand modifyAppointmentType = new ModifyAppointmentType(id, name);
+        modifyAppointmentType.execute();
+        return (String)modifyAppointmentType.getResult();
     }
 }

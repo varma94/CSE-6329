@@ -15,6 +15,7 @@ import uta.cse4361.businessobjects.SlotFactory;
 import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.StudentAccount;
+import uta.cse4361.businessobjects.AppointmentType;
 
 /**
  *
@@ -126,5 +127,21 @@ public class DatabaseManager {
     
     public ArrayList<String> getAdvisingTypes(){
         return imp.getAppointmentTypes();
+    }
+    
+    public ArrayList<AppointmentType> getAppointmentTypesObj(){
+        return imp.getAppointmentTypesObjs();
+    }
+    
+    public AppointmentType getAppointmentType(int id){
+        return imp.getAppointmentType(id);
+    }
+    
+    public String deleteAppointmentType(int id){
+        return imp.deleteAppointmentType(id);
+    }
+    
+    public String modifyAppointmentType(int id, String name){
+        return imp.modifyAppointmentType(id, name);
     }
 }

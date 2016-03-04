@@ -8,7 +8,6 @@ package uta.cse4361.databases;
 import java.sql.SQLException;
 
 import uta.cse4361.businessobjects.AdvisorAccount;
-import uta.cse4361.businessobjects.Appointment;
 
 /**
  *

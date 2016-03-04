@@ -104,6 +104,8 @@
                                 </table>
                                 <br>
                                    <input type="submit" value="Modify Appointment" id="submitBtn" class="btn btn-default" class="btn btn-default">
+                                   <button type="button" value="Manage Appointment Type" id="createActBtn" 
+                                           class ="btn btn-default" onclick="window.location.href='appointmenttypes.jsp';" >Manage Appointment Types</button>
                                 </form>
                             </div>
 
