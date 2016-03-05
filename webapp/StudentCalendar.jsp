@@ -8,6 +8,8 @@
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page import="uta.cse4361.businessobjects.AppointmentType" %>
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount" %>
+<%@page import="uta.cse4361.businessobjects.Slot" %>
+<%@page import="java.util.Calendar" %>
 
 <html>
     <head>
@@ -61,8 +63,20 @@
            AdvisorAccount acct = dm.getAdvisor(advisorID);
            String advisorName = acct.getName();
             
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots(advisorID, typeID);
-  
+            java.util.ArrayList<Slot> fw = dm.getTypeSlots(advisorID, typeID);
+            Calendar currentDate = Calendar.getInstance();
+            Iterator<Slot> iter = fw.iterator();
+
+            while (iter.hasNext()) {
+                Slot slot = iter.next();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(slot.getDate());
+                cal.set(Calendar.HOUR_OF_DAY, slot.getHour());
+                cal.set(Calendar.MINUTE, slot.getMinute());
+                if (cal.before(currentDate)){
+                    iter.remove();
+                }
+            }
            int fwsize= fw.size();
           
            
@@ -94,7 +108,13 @@
            
            String desc = request.getParameter("description");
            
-           boolean timeSubmitted =  !(request.getParameter("startTime")==null || request.getParameter("startTime")=="");
+           boolean timeSubmitted =  !(request.getParameter("startTime")==null || request.getParameter("startTime")=="" );
+           String studentID = "";
+           if (request.getParameter("sID") == null || request.getParameter("sID")=="" || request.getParameter("sID").equals("null")){
+               studentID = "1000000000";
+           } else {
+               studentID = request.getParameter("sID");
+           }
            
                                 
         %>
@@ -104,7 +124,7 @@
         <!--<script type="text/javascript" src="js/arrayProcess.js"></script>-->                
         <jsp:useBean id="newAppt" class="uta.cse4361.beans.ScheduleAppointmentBean"/> 
         <jsp:setProperty name="newAppt" property="studentEmail" param="email" />
-        <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
+        <jsp:setProperty name="newAppt" property="studentID" value='<%= studentID%>' /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="studentMajor" param="major" /> 
         <jsp:setProperty name="newAppt" property="advisorName" value='<%= advisorName%>' />
@@ -112,12 +132,12 @@
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
         <% if(timeSubmitted){ %>
-        <jsp:setProperty name="newAppt" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
-        <jsp:setProperty name="newAppt" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
-        <jsp:setProperty name="newAppt" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
-        <jsp:setProperty name="newAppt" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
-        <jsp:setProperty name="newAppt" property="typeID" value= '<%= Integer.parseInt(request.getParameter("typeID")) %>'/>
-        <jsp:setProperty name="newAppt" property="advisorID" value= '<%= Integer.parseInt(request.getParameter("advisorID")) %>'/>
+            <jsp:setProperty name="newAppt" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
+            <jsp:setProperty name="newAppt" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
+            <jsp:setProperty name="newAppt" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
+            <jsp:setProperty name="newAppt" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
+            <jsp:setProperty name="newAppt" property="typeID" value= '<%= Integer.parseInt(request.getParameter("typeID")) %>'/>
+            <jsp:setProperty name="newAppt" property="advisorID" value= '<%= Integer.parseInt(request.getParameter("advisorID")) %>'/>
         <%}%>
         <title>Advising Calendar</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
@@ -160,7 +180,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="type">Advising Type</label>
-                                        <input type="text" name="type" id="type" value="<%= typeName %>" readonly="readonly">
+                                        <input class="form-control" type="text" name="type" id="type" value="<%= typeName %>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Date</label>

@@ -24,32 +24,33 @@ $(document).ready(function() {
                 endHour = parseInt(hour[k]);
                 endMin = 45;
         }
-        if(parseInt(min[k])== 45)
+        if(parseInt(min[k])=== 45)
             {
                 endHour = parseInt(hour[k])+1;
                 endMin = 0;
 //                alert(endHour+":"+endMin);
             }
         if(isAppt[k] == "true"){          
-            formattedEventData.push({            
-            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
-            end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
-            sHour: hour[k], 
-            sMin: min[k],  
-            title: "Occupied",
-            color: '#808080'
+                formattedEventData.push({            
+                start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+                end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
+                sHour: hour[k], 
+                sMin: min[k],  
+                title: "Occupied",
+                color: '#808080'
                                 });
-        }
-        else{
-        formattedEventData.push({            
-            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
-            end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
-            sHour: hour[k], 
-            sMin: min[k],  
-            title: "Available",
-            color: '#00377b'
+            }
+            else{
+                formattedEventData.push({            
+                start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+                end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
+                sHour: hour[k], 
+                sMin: min[k],  
+                title: "Available",
+                color: '#00377b'
                                 });
-         }
+            }
+        
                                     };
 //    }
  
