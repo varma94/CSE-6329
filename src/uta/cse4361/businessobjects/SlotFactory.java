@@ -7,6 +7,7 @@ package uta.cse4361.businessobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
+import uta.cse4361.databases.DatabaseManager;
 
 /**
  *
@@ -24,22 +25,24 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
         return AppointmentFlyweightFactoryHolder.INSTANCE;
     }
 
-    public int determineNumberOfFlyweights(int startHour, int endHour, int startMinute, int endMinute) {
+    public int determineNumberOfFlyweights(int startHour, int endHour, int startMinute, int endMinute, int increment) {
         
-        int hours = endHour - startHour;
-        int numOfFlyweights = hours * (60 / INCREMENT_GAP);
-        int minutes = endMinute - startMinute;
-        numOfFlyweights = numOfFlyweights + (minutes / INCREMENT_GAP);
+        int hours = endHour - startHour - 1;
+        int totalMinutes = (hours * 60) + endMinute + (60 - startMinute);
+        int numOfFlyweights = totalMinutes/increment;
         return numOfFlyweights;
     }
 
-    private void updateTimes() 
+    private void updateTimes(int increment ) 
     {
-        nextMinute = nextMinute + INCREMENT_GAP;
+        int additionalHours = increment/60;
+        nextHour = nextHour + additionalHours;
+        int additionalMinutes = increment%60;
+        nextMinute = nextMinute + additionalMinutes;
         
         if (nextMinute >= 60)
         {
-            nextMinute = 0;
+            nextMinute = nextMinute%60;
             nextHour++;
         }
         
@@ -58,12 +61,15 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
     
     public ArrayList<Slot> generateSlots(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key, int appTypeID, int advisorID)
     {
+        DatabaseManager dm = new DatabaseManager();
+        int appLength = dm.getAppointmentType(appTypeID).getLength();
+        
         if(isValidTime(startHour, endHour, startMinute, endMinute))
         {
             return null;
         }
         
-        int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
+        int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute, appLength);
         
         ArrayList<Slot> flyweightsToReturn = new ArrayList<>();
         
@@ -83,7 +89,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
                 {
                     return null;
                 }
-                updateTimes();
+                updateTimes(appLength);
             }
         }
         else if(key.equals(AVAILABLE_FLYWEIGHT_KEY))
@@ -98,7 +104,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
                 {
                     return null;
                 }
-                updateTimes();
+                updateTimes(appLength);
             }
         }
         else

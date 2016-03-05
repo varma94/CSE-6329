@@ -24,13 +24,13 @@ public class Scheduler implements uta.cse4361.interfaces.Constants{
     }
 
     
-    public String schedule(Appointment newAppointment){
+    public String schedule(Appointment newAppointment, int appType){
         databaseManager = new DatabaseManager();
         appointment = newAppointment;
         String msg = SUCCESS_MESSAGE;
         boolean isFree = databaseManager.isFree(appointment.getDate(), 
                 appointment.getStartHour(), appointment.getEndHour(), 
-                appointment.getStartMinute(),appointment.getEndMinute());
+                appointment.getStartMinute(),appointment.getEndMinute(), appType);
         if (isFree == true )
         {
             databaseManager.saveAppointment(appointment);

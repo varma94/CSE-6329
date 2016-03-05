@@ -26,6 +26,7 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     private int endHour = 0;
     private int startMinute = 0;
     private int endMinute = 0;
+    private int appType;
     private int isRepeat = 0;
     private int advisingType;
     private int advisor;
@@ -35,13 +36,12 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     }
     
     public String allocateTime() {
-        String msg = SUCCESS_MESSAGE;
         SlotFactory aff = SlotFactory.getInstance();
         ArrayList<Slot> slots = aff.generateSlots(date, this.startHour, 
                 this.endHour, this.startMinute, this.endMinute, 0, 
                 AVAILABLE_FLYWEIGHT_KEY, advisingType, advisor);
         DatabaseManager databaseManager = new DatabaseManager();
-        msg = databaseManager.saveSlots(slots);
+        String msg = databaseManager.saveSlots(slots);
         return msg;
     }
     
@@ -101,6 +101,9 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     public void setAdvisor(int advisor){
         this.advisor = advisor;
     }
+    public void setAppType(int appType){
+        this.appType = appType;
+    }
     
     // Getters
     public Date getDate(){
@@ -123,5 +126,8 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     }
     public int getAdvisor(){
         return this.advisor;
+    }
+    public int getAppType(){
+        return this.appType;
     }
 }

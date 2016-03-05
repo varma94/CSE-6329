@@ -27,10 +27,11 @@ public class DatabaseManager {
         
     }
     
-    public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute) {
+    public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute, int appType) {
         ArrayList<Slot> slots = imp.getAvailSlotsByTime(date, startHour, endHour, startMinute, endMinute);
         SlotFactory f = SlotFactory.getInstance();
-        int apptSize = f.determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
+        int appLength = imp.getAppointmentType(appType).getLength();
+        int apptSize = f.determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute, appLength);
         if(slots.size() >= apptSize){
             return true;
         }

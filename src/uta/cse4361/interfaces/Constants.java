@@ -27,7 +27,6 @@ public interface Constants {
     final static String FLYWEIGHTS_DIFFERENT_DATE_FAULT = "The flyweights submitted have different dates";
     final static String MODIFY_ACCOUNT_FAIL = "The account could not be modified";
     
-    final static int INCREMENT_GAP = 15;
     final static int MIN_HOUR = 0;
     final static int MAX_HOUR = 23;
     final static int MIN_MINUTE = 0;

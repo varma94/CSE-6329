@@ -159,7 +159,7 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
             deleteAccount.execute();
             return (String)deleteAccount.getResult();
         }
-    
+    @Override
       public StudentAccount getStudentAccount(String email){
         RDBImplCommand getAccount = new GetStudent(email);
         getAccount.execute();

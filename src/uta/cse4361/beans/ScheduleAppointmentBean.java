@@ -51,7 +51,7 @@ public class ScheduleAppointmentBean implements Constants {
             return this.INITIALIZE_APPOINTMENT_FAIL;
         }
         Scheduler s = new Scheduler();
-        msg = s.schedule(a);
+        msg = s.schedule(a, typeID);
         return msg;
     }
 

@@ -7,6 +7,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page import="uta.cse4361.businessobjects.AppointmentType" %>
+<%@page import="uta.cse4361.businessobjects.Slot" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -38,7 +39,7 @@
         int fwsize = 0;
         DatabaseManager dm = new DatabaseManager();
         Date currDate = new Date();
-        java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();
+        java.util.ArrayList<Slot> fw = dm.getTypeSlots();
 
         StringBuilder sbDay = new StringBuilder();
         StringBuilder sbHour = new StringBuilder();
@@ -52,27 +53,13 @@
             fwsize = fw.size();
 
             for (int i = 0; i < fwsize; i++) {
-                sbAppt.append(fw.get(i).isAppointment() + ",");
-            }
-
-            for (int i = 0; i < fwsize; i++) {
-                sbDay.append(fw.get(i).getDate().getDate() + ",");
-            }
-
-            for (int i = 0; i < fwsize; i++) {
-                sbHour.append(fw.get(i).getTime() / 60 + ",");
-            }
-
-            for (int i = 0; i < fwsize; i++) {
-                sbMin.append(fw.get(i).getTime() % 60 + ",");
-            }
-
-            for (int i = 0; i < fwsize; i++) {
-                sbMonth.append(fw.get(i).getDate().getMonth() + ",");
-            }
-
-            for (int i = 0; i < fwsize; i++) {
-                sbYear.append((fw.get(i).getDate().getYear() + 1900) + ",");
+                Slot slot = fw.get(i);
+                sbAppt.append(slot.isAppointment() + ",");
+                sbDay.append(slot.getDate().getDate() + ",");
+                sbHour.append(slot.getTime() / 60 + ",");
+                sbMin.append(slot.getTime() % 60 + ",");
+                sbMonth.append(slot.getDate().getMonth() + ",");
+                sbYear.append((slot.getDate().getYear() + 1900) + ",");
             }
         }
     %>
@@ -216,6 +203,7 @@
                                 <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime"))%>'/>
                                 <jsp:setProperty name="allocateTimeBean" property="advisingType" value= '<%= Integer.parseInt(request.getParameter("advisingType"))%>'/>
                                 <jsp:setProperty name="allocateTimeBean" property="advisor" value= '<%= sessionid %>'/>
+                                <jsp:setProperty name="allocateTimeBean" property="appType" value='<%= Integer.parseInt(request.getParameter("advisingType"))%>'/>
                                 
                                 <%
                                     String r = request.getParameter("numbers");
@@ -240,27 +228,13 @@
                                         fwsize = fw.size();
 
                                         for (int i = 0; i < fwsize; i++) {
-                                            sbAppt.append(fw.get(i).isAppointment() + ",");
-                                        }
-
-                                        for (int i = 0; i < fwsize; i++) {
-                                            sbDay.append(fw.get(i).getDate().getDate() + ",");
-                                        }
-
-                                        for (int i = 0; i < fwsize; i++) {
-                                            sbHour.append(fw.get(i).getTime() / 60 + ",");
-                                        }
-
-                                        for (int i = 0; i < fwsize; i++) {
-                                            sbMin.append(fw.get(i).getTime() % 60 + ",");
-                                        }
-
-                                        for (int i = 0; i < fwsize; i++) {
-                                            sbMonth.append(fw.get(i).getDate().getMonth() + ",");
-                                        }
-
-                                        for (int i = 0; i < fwsize; i++) {
-                                            sbYear.append((fw.get(i).getDate().getYear() + 1900) + ",");
+                                            Slot slot = fw.get(i);
+                                            sbAppt.append(slot.isAppointment() + ",");
+                                            sbDay.append(slot.getDate().getDate() + ",");
+                                            sbHour.append(slot.getTime() / 60 + ",");
+                                            sbMin.append(slot.getTime() % 60 + ",");
+                                            sbMonth.append(slot.getDate().getMonth() + ",");
+                                            sbYear.append((slot.getDate().getYear() + 1900) + ",");
                                         }
                                     }
 
