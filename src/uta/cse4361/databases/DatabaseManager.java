@@ -148,8 +148,8 @@ public class DatabaseManager {
         return imp.deleteAppointmentType(id);
     }
     
-    public String modifyAppointmentType(int id, String name){
-        return imp.modifyAppointmentType(id, name);
+    public String modifyAppointmentType(int id, String name, int length){
+        return imp.modifyAppointmentType(id, name, length);
     }
 
     public String createAptType(String name) {

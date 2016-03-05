@@ -15,6 +15,7 @@ public class ModifyAppointmentTypeBean implements Constants{
     private int appTypeID;
     private String appTypeName;
     private boolean remove = false;
+    private int appTypeLength;
     
     public ModifyAppointmentTypeBean(){
         
@@ -29,7 +30,7 @@ public class ModifyAppointmentTypeBean implements Constants{
         {
             returnMessage = databaseManager.deleteAppointmentType(appTypeID);
         } else {
-            returnMessage = databaseManager.modifyAppointmentType(appTypeID, appTypeName);
+            returnMessage = databaseManager.modifyAppointmentType(appTypeID, appTypeName, appTypeLength);
         }
         return returnMessage;
     }
@@ -48,6 +49,10 @@ public class ModifyAppointmentTypeBean implements Constants{
         this.appTypeName = newName;
     }
     
+    public void setAppTypeLength(int length){
+        this.appTypeLength = length;
+    }
+    
     public boolean getRemove()
     {
         return this.remove;
@@ -58,7 +63,11 @@ public class ModifyAppointmentTypeBean implements Constants{
         return this.appTypeID;
     }
     
-    public String setAppTypeName() {
+    public String getAppTypeName() {
         return this.appTypeName;
+    }
+    
+    public int getAppTypeLength(){
+        return appTypeLength;
     }
 }

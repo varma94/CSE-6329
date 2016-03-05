@@ -12,10 +12,12 @@ package uta.cse4361.businessobjects;
 public class AppointmentType {
     int id;
     String name;
+    int length;
     
-    public AppointmentType(int id, String name){
+    public AppointmentType(int id, String name, int length){
         this.id = id;
         this.name = name;
+        this.length = length;
     }
     
     public String getName(){
@@ -24,5 +26,9 @@ public class AppointmentType {
     
     public int getID(){
         return id;
+    }
+    
+    public int getLength(){
+        return length;
     }
 }

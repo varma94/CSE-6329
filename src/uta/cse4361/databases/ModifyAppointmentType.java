@@ -15,12 +15,14 @@ class ModifyAppointmentType extends RDBImplCommand {
 
     private String name;
     private int id;
-    private String sqlQuery = "update APPOINTMENTTYPES set ApTypeName = ? Where ApTypeID = ?";
+    private int length;
+    private String sqlQuery = "update APPOINTMENTTYPES set ApTypeName = ?, ApTypeLength = ? Where ApTypeID = ?";
 
-    public ModifyAppointmentType(int id, String name) {
+    public ModifyAppointmentType(int id, String name, int length) {
         super();
         this.name = name;
         this.id = id;
+        this.length = length;
     }
 
     @Override
@@ -28,7 +30,8 @@ class ModifyAppointmentType extends RDBImplCommand {
         try {
             statement = conn.prepareStatement(sqlQuery);
             statement.setString(1, name);
-            statement.setInt(2, id);
+            statement.setInt(2, length);
+            statement.setInt(3, id);
             statement.executeUpdate();
             processResult();
         } catch (SQLException e) {

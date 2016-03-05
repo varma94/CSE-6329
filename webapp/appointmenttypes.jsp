@@ -47,6 +47,8 @@
                                     <th>Appointment Type Id</th>
 
                                     <th>Appointment Type</th>
+                                    
+                                    <th>Type Length (Minutes) </th>
 
                                     <th>Select</th>
                                     
@@ -60,9 +62,15 @@
                                         out.print("<td>");
                                         out.print(a.getID());
                                         out.print("</td>");
+                                        
                                         out.print("<td>");                                       
                                         out.print(a.getName());
                                         out.print("</td>");
+                                        
+                                        out.print("<td>");                                       
+                                        out.print(a.getLength());
+                                        out.print("</td>");
+                                        
                                         out.print("<td>");
                                         out.print("<input type='radio' name='id' value='" + a.getID() +"'>");
                                         out.print("</td>");

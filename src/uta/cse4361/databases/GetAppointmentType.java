@@ -44,7 +44,8 @@ class GetAppointmentType extends RDBImplCommand {
             if(resultSet.next()){
                 int id = resultSet.getInt("ApTypeID");
                 String name = resultSet.getString("ApTypeName");
-                result = new AppointmentType(id, name);
+                int length = resultSet.getInt("ApTypeLength");
+                result = new AppointmentType(id, name, length);
             }
             else{
                 result = null;

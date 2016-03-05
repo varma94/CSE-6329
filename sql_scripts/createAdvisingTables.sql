@@ -80,10 +80,13 @@ INSERT INTO USERTYPES (TypeID, TypeName)
 VALUES ('0', 'Advisor'),
 ('1', 'Administrator'),
 ('2', 'Student');
+('3', 'Lead Advisor');
+('4', 'Staff')
 
 CREATE TABLE APPOINTMENTTYPES(
     ApTypeID INTEGER NOT NULL AUTO_INCREMENT,
     ApTypeName VARCHAR(30) NOT NULL,
+    ApTypeLength INTEGER DEFAULT 15, 
     PRIMARY KEY (ApTypeID)
 );
 

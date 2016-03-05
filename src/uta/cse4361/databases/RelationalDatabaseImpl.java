@@ -222,8 +222,8 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
-    public String modifyAppointmentType(int id, String name) {
-        RDBImplCommand modifyAppointmentType = new ModifyAppointmentType(id, name);
+    public String modifyAppointmentType(int id, String name, int length) {
+        RDBImplCommand modifyAppointmentType = new ModifyAppointmentType(id, name, length);
         modifyAppointmentType.execute();
         return (String)modifyAppointmentType.getResult();
     }

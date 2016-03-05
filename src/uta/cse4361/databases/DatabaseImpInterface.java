@@ -41,7 +41,7 @@ public interface DatabaseImpInterface {
     public ArrayList<AppointmentType> getAppointmentTypesObjs();
     public AppointmentType getAppointmentType(int id);
     public String deleteAppointmentType(int id);
-    public String modifyAppointmentType(int id, String name);
+    public String modifyAppointmentType(int id, String name, int length);
     public String createAptType(String name);
     public ArrayList<AdvisorAccount> getAdvisors();
     public AdvisorAccount getAdvisor(int id);

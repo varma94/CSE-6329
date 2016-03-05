@@ -44,7 +44,8 @@ public class GetAppointmentTypesObjs extends RDBImplCommand{
             {
                 int id = resultSet.getInt("ApTypeID");
                 String name = resultSet.getString("ApTypeName");
-                AppointmentType app = new AppointmentType(id, name);
+                int length = resultSet.getInt("ApTypeLength");
+                AppointmentType app = new AppointmentType(id, name, length);
                 ((ArrayList<AppointmentType>) result).add(app);
             }
         } catch (SQLException e) {

@@ -50,6 +50,7 @@
                             int id = Integer.parseInt(request.getParameter("id"));
                             AppointmentType appt = dm.getAppointmentType(id);
                             String name = appt.getName();
+                            int length = appt.getLength();
                             boolean descriptionSubmitted = !(request.getParameter("remove") == null || request.getParameter("remove") == "");
                         
                     %>
@@ -61,6 +62,10 @@
                         <div class="form-group">
                             <label for="typeName">Name</label>
                             <input class="form-control" type="text" name="typeName" size="50" id="typeName" value = "<%=name%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="typeLength">Length</label>
+                            <input class="form-control" type="text" name="typeLength" size="50" id="typeLength" value = "<%=length%>">
                         </div>
                         <input type="hidden" value="false" name="remove">
                         <input type="submit" value="Edit Appointment Type" id="submitBtn" class="btn btn-default">
@@ -84,6 +89,7 @@
                             if (Boolean.parseBoolean(request.getParameter("remove")) == false){
                         %>
                         <jsp:setProperty name="matb" property="appTypeName" value= '<%= request.getParameter("typeName")%>'/>
+                        <jsp:setProperty name="matb" property="appTypeLength" value='<%=Integer.parseInt(request.getParameter("typeLength"))%>'/>
 
                         <%
                             }
