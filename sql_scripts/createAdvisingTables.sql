@@ -34,6 +34,7 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
     UserName VARCHAR(30),
     UserDepartment VARCHAR(30),
     UserRank INTEGER,
+    lognum INTEGER,
     PRIMARY KEY (UserID)
 );
 
