@@ -57,5 +57,6 @@ public interface DatabaseImpInterface {
     public ArrayList<Slot> getApptSlots(int advisorID, int apptType);
     public ArrayList<AccountType> getAccountTypes();
     public AccountType getAccountType(int id);
+    public String createAccountType(String name);
     
 }

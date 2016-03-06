@@ -194,4 +194,8 @@ public class DatabaseManager {
     public AccountType getAccountType(int id){
         return imp.getAccountType(id);
     }
+    
+    public String createAccountType(String name){
+        return imp.createAccountType(name);
+    }
 }

@@ -1,9 +1,9 @@
 //$("#scheduleBtn").button();
 //$("#loginBtn").button().click(function(){});
-$("#newAptTypeBtn").on('click', function () {
+$("#newActTypeBtn").on('click', function () {
     bootbox.dialog({
-        title: "Create New Appointment Type",
-        message: "<form role='form' id='aptType' method='POST' action='AptTypeValidation.jsp' onsubmit='return validate()'>"
+        title: "Create New Account Type",
+        message: "<form role='form' id='actType' method='POST' action='ActTypeValidation.jsp' onsubmit='return validate()'>"
                 + "<div class='form-group'>"
                 + "<label for='name'>Name</label>"
                 + "<input class='form-control' type='text' name='name' id='name' value=''>"
@@ -16,7 +16,7 @@ $("#newAptTypeBtn").on('click', function () {
                 label: "Create",
                 className: "btn-primary",
                 callback: function () {
-                    document.getElementById("aptType").submit();
+                    document.getElementById("actType").submit();
                 }
             }
         }
@@ -30,7 +30,7 @@ $("#rightAccordion").accordion({heightStyle: content});
 
 
 function validate() {
-    var name = document.forms["aptType"]["name"].value;
+    var name = document.forms["actType"]["name"].value;
     
     if (name === null || name === "") {
         $("#name").notify("Please enter a name", "error",

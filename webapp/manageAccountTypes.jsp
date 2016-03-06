@@ -75,8 +75,7 @@
                                 <br>
                                    <input type="submit" value="Modify Account Type" name="action" value="Update" id="submitBtn" class="btn btn-default" />
                                    <input type="submit" value="Delete Account Type" name="action" value="Delete" class="btn btn-default"/>
-                                   <button type="button" value="Create Account" id="createTypeBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='CreateAccountType.jsp';" >Create Account Type</button>
+                                   <button type="button" value="Create Account" id='newActTypeBtn' class ="btn btn-default"  >Create Account Type</button>
                                 </form>
                             </div>
 
@@ -85,4 +84,5 @@
     <jsp:include page="footer.jsp" />                            
     </body>
     <script type="text/javascript" src="js/modifyAppointment.js"></script>
+    <script type='text/javascript' src='js/createAccountType.js'></script>
 </html>

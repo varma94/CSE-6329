@@ -295,4 +295,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         getAccountType.execute();
         return (AccountType)getAccountType.getResult();
     }
+    
+    @Override
+    public String createAccountType(String name){
+        RDBImplCommand createAccountType = new CreateAccountType(name);
+        createAccountType.execute();
+        return (String)createAccountType.getResult();
+    }
 }
