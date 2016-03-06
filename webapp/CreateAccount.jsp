@@ -84,7 +84,7 @@
                 }
 
             }
-        </script>
+        </script> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Account</title>
     </head>
@@ -106,7 +106,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" type="password" name="password" id="password" value="">
+                        <input class="form-control" type="password" name="password" id="password" value="" onkeyup="passwordChanged()">
+                        <span id="strength"></span>
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirm">Confirm Password</label>
@@ -139,6 +140,7 @@
           </div>
          
     </body>
+    
     <jsp:include page="footer.jsp" />
     <script type="text/javascript" src="js/CreateAccount.js"></script>
 </html>

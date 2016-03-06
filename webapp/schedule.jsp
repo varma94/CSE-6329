@@ -118,36 +118,34 @@
                     return false;
                 }
                 if (sID === null || sID === "") {
-                    $("#sID").notify("Please enter your student ID", "error",
+                    
+                } else {
+                    if (isNaN(sID)) {
+                        $("#sID").notify("Your student ID must be a number", "error",
                             {elementPosition: 'bottom center',
                                 globalPosition: 'bottom center'})
-                    document.forms["schedule"]["sID"].focus();
-                    return false;
+                        document.forms["schedule"]["sID"].focus();
+                        return false;
+                    }
+                    
+                    if (sID.length !== 10) {
+                        $("#sID").notify("Your student ID must be a 10-digit number", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                        document.forms["schedule"]["sID"].focus();
+                        return false;
+                    }
+                    
+                    if (sID.indexOf("100") === -1 && sID.indexOf("6000") === -1 ) {
+                        $("#sID").notify("Your student ID should begin with 100 or 6000", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                        document.forms["schedule"]["sID"].focus();
+                        return false;
+                    }
                 }
                 
                 
-                
-                if (isNaN(sID)) {
-                    $("#sID").notify("Your student ID must be a number", "error",
-                            {elementPosition: 'bottom center',
-                                globalPosition: 'bottom center'})
-                    document.forms["schedule"]["sID"].focus();
-                    return false;
-                }
-                if (sID.length !== 10) {
-                    $("#sID").notify("Your student ID must be a 10-digit number", "error",
-                            {elementPosition: 'bottom center',
-                                globalPosition: 'bottom center'})
-                    document.forms["schedule"]["sID"].focus();
-                    return false;
-                }
-                if (sID.indexOf("1000") === -1 && sID.indexOf("6000") === -1) {
-                    $("#sID").notify("Your student ID should begin with 1000 or 6000", "error",
-                            {elementPosition: 'bottom center',
-                                globalPosition: 'bottom center'})
-                    document.forms["schedule"]["sID"].focus();
-                    return false;
-                }
                 
                 if (sName === null || sName === "") {
                     $("#sName").notify("Please enter your name", "error",

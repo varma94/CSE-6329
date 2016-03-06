@@ -21,7 +21,7 @@ public class CreateAdvisorAccountBean implements Constants{
     private int ID= 0;
     private String tempPassword = null;
     private int rank = 0;
-    private int lognum =0;
+    private int logNum =0;
 
     public CreateAdvisorAccountBean() {
     }
@@ -31,7 +31,7 @@ public class CreateAdvisorAccountBean implements Constants{
        String returnMessage = SUCCESS_MESSAGE;
        
        AdvisorAccount AA = new AdvisorAccount();
-       boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank, this.lognum);
+       boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank, this.logNum);
        if (a == false)
            return this.CREATE_ADVISOR_FAIL;
        DatabaseManager dm = new DatabaseManager();
@@ -43,7 +43,7 @@ public class CreateAdvisorAccountBean implements Constants{
     }
     
     public int getLogNum() {
-        return lognum;
+        return logNum;
     }
 
     public String getEmail() {
@@ -74,8 +74,8 @@ public class CreateAdvisorAccountBean implements Constants{
         this.email = email;
     }
 
-    public void setLogNum(int lognum) {
-        this.lognum = lognum;
+    public void setLogNum(int logNum) {
+        this.logNum = logNum;
     }
     
     public void setDepartment(String department) {
