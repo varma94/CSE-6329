@@ -105,7 +105,14 @@
 
             StringBuilder sbYear = new StringBuilder();
             for(int i=0;i<fwsize;i++) 
-                sbYear.append((fw.get(i).getDate().getYear()+1900)+",");     
+                sbYear.append((fw.get(i).getDate().getYear()+1900)+",");
+            
+            StringBuilder sbLength = new StringBuilder();
+            for (int i=0; i<fwsize; i++){
+                Slot slot = fw.get(i);
+                int apLength = dm.getAppointmentType(slot.getAppTypeID()).getLength();
+                sbLength.append(apLength +",");
+            }
                   
            
            String desc = request.getParameter("description");
@@ -300,6 +307,9 @@
                 var year = new Array();
                 window.year = temp.split(',',size);
 
+                var temp="<%=sbLength.toString() %>";
+                var apLength = new Array();
+                window.apLength = temp.split(',',size);
                 
                 
                 //alert("array: "+array);

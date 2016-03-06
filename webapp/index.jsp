@@ -54,7 +54,7 @@ and open the template in the editor.
                                     + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
                                     + "</li>");
                                  
-                            %>)
+                            %>
                             <h3>Display Current Date & Time</h3>
                             
                             <%

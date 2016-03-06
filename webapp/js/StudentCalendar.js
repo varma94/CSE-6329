@@ -9,33 +9,27 @@ $(document).ready(function() {
     var k; 
     var endHour, endMin;
     for (var k = 0; k < size; k++) {
-        if(parseInt(min[k]) === 0)
+            var startMin = parseInt(min[k]);
+            var itemLength = apLength[k];
+            
+            endHour = parseInt(hour[k]) + Math.floor(itemLength/60);
+            var additionalMinutes  = itemLength%60;
+            endMin = startMin + additionalMinutes;
+        
+            if (endMin >= 60)
             {
-                endHour = parseInt(hour[k]);
-                endMin = 15;
+                endMin = endMin%60;
+                endHour++;
             }
-        if(parseInt(min[k]) === 15)
-        {
-                endHour = parseInt(hour[k]);
-                endMin = 30;
-        }
-        if(parseInt(min[k]) === 30)
-        {
-                endHour = parseInt(hour[k]);
-                endMin = 45;
-        }
-        if(parseInt(min[k])=== 45)
-            {
-                endHour = parseInt(hour[k])+1;
-                endMin = 0;
-//                alert(endHour+":"+endMin);
-            }
+        
         if(isAppt[k] == "true"){          
                 formattedEventData.push({            
                 start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
                 end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
                 sHour: hour[k], 
-                sMin: min[k],  
+                sMin: min[k],
+                eHour: endHour,
+                eMin: endMin,
                 title: "Occupied",
                 color: '#808080'
                                 });
@@ -45,7 +39,9 @@ $(document).ready(function() {
                 start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
                 end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
                 sHour: hour[k], 
-                sMin: min[k],  
+                sMin: min[k],
+                eHour: endHour,
+                eMin: endMin,
                 title: "Available",
                 color: '#00377b'
                                 });
@@ -91,23 +87,14 @@ var calendar = $('#calendar').fullCalendar({
                 else{
                     $('input[name="startTime"]').val(event.sHour+":" + event.sMin); //24 hour format
                 }
-                //fix this later
-                if(event.sMin === '45')
-                {
-                    $('input[name="endTime"]').val((parseInt(event.sHour)+1)+":00");
+                
+                if(event.eMin === 0){
+                    $('input[name="endTime"]').val(event.eHour+":00"); //24 hour format
                 }
-                if(event.sMin === '0')
-                {
-                    $('input[name="endTime"]').val((event.sHour)+":15");
+                else{
+                    $('input[name="endTime"]').val(event.eHour+":" + event.eMin); //24 hour format
                 }
-                if(event.sMin === '15')
-                {
-                    $('input[name="endTime"]').val((event.sHour)+":30");
-                }
-                if(event.sMin === '30')
-                {
-                    $('input[name="endTime"]').val((event.sHour)+":45");
-                }
+
                 $("#endTime").notify("Time selected", "success", 
                 {elementPosition: 'bottom center',
                  globalPosition: 'bottom middle'});
