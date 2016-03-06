@@ -36,7 +36,6 @@
             }
          if (rank == 2){
                 
-                
                 out.print("<li class='account'>"
                         + "<a href='studentAccountEdit.jsp' >Edit Account</a>"
                         + "</li>");

@@ -10,7 +10,10 @@ import java.util.Date;
 import java.util.Properties;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Scheduler;
+import uta.cse4361.businessobjects.EventSync;
 import uta.cse4361.interfaces.Constants;
+import uta.cse4361.databases.DatabaseManager;
+import java.util.Calendar;
 //import javax.mail.*;
 //import javax.mail.internet.InternetAddress;
 //import javax.mail.internet.MimeMessage;
@@ -52,6 +55,25 @@ public class ScheduleAppointmentBean implements Constants {
         }
         Scheduler s = new Scheduler();
         msg = s.schedule(a, typeID);
+        
+        DatabaseManager dm = new DatabaseManager();
+        String advisorEmailAddress = dm.getAdvisor(advisorID).getEmail();
+        Calendar startTime = Calendar.getInstance();
+        startTime.setTime(date);
+        startTime.set(Calendar.HOUR_OF_DAY, startHour);
+        startTime.add(Calendar.HOUR_OF_DAY, 5);     //add five hours to make up for timezone
+        startTime.set(Calendar.MINUTE, startMinute);
+        Calendar endTime = Calendar.getInstance();
+        endTime.setTime(date);
+        endTime.set(Calendar.HOUR_OF_DAY, endHour);
+        endTime.add(Calendar.HOUR_OF_DAY, 5);       //add five hours to make up for timezone
+        endTime.set(Calendar.MINUTE, endMinute);
+        EventSync sync = new EventSync(advisorEmailAddress, startTime, endTime);
+        try{
+            sync.send("New Student Appointment",generateAdvisorMessage(), "New Advising Appointment");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return msg;
     }
 

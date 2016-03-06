@@ -9,12 +9,14 @@
 <%@page import="uta.cse4361.businessobjects.AppointmentType" %>
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount" %>
 <%@page import="uta.cse4361.businessobjects.Slot" %>
+<%@page import="uta.cse4361.businessobjects.EventSync" %>
 <%@page import="java.util.Calendar" %>
 
 <html>
     <head>
     	<script>
 			//Create timeout script
+                        
 			<%
 			String clock = request.getParameter( "clock" );
 			if( clock == null ) clock = "600";
@@ -234,8 +236,6 @@
                                                 	mex.printStackTrace(); 
                                                 	result_delivery = "Sending failed...."; 
                                                 } */
-                                                
-                                                
                                                 response.sendRedirect("AppointmentDetails.jsp");
                                             }
                                             else{

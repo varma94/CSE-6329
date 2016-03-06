@@ -52,7 +52,6 @@ and open the template in the editor.
                                  out.print("<li class='account'>"
                                     + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
                                     + "</li>");
-                                 out.print("<a href='testmail.jsp'>Test Mail </a> ");
                             }
                             if (rank == 1){
                                 out.print("Welcome administrator.");

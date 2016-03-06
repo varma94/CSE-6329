@@ -30,7 +30,7 @@
                 {
                     response.sendRedirect("index.jsp");
                 }
-        %>
+      %>
     <body>
         <jsp:include page="navigationbar.jsp" />
         <div id="wrapper">
@@ -43,7 +43,7 @@
 
                         DatabaseManager dm = new DatabaseManager();
                         if (request.getParameter("email") == null || request.getParameter("email") == "" || request.getParameter("email").equals("")) {
-                            response.sendRedirect("modifyAppointment.jsp");
+                            //response.sendRedirect("modifyAppointment.jsp");
                         }
                         else 
                         {
