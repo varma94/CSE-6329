@@ -1,16 +1,16 @@
 <%-- 
-    Document   : CreateAccount
-    Created on : Nov 22, 2014, 5:50:01 PM
-    Author     : Melissa
+    Document   : manageAccountTypes
+    Created on : Mar 6, 2016, 3:05:50 PM
+    Author     : oguni
 --%>
 
-<%@page import="uta.cse4361.businessobjects.Appointment"%>
+<%@page import="uta.cse4361.businessobjects.AccountType"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Delete Account</title>
+        <title>Manage Account Types</title>
     </head>
 <%
             int rank = -1;
@@ -38,21 +38,15 @@
                 <jsp:include page="header.jsp" />
                     <div id="appointmentAccordion" class="centerthis">
 
-                            <h3>Accounts</h3>
+                            <h3>Account Types</h3>
                             <div>
-                                <form  name="AccountForm" action="accountEdit.jsp">
+                                <form  name="AccountForm" action="manageAccountTypes.jsp">
                                 <table class="display" id="appointmentList" cellpadding= "3" cellspacing= "0" >
                                     <thead>
 
-                                    <th>User Id</th>
+                                    <th>ID</th>
 
-                                    <th>User Email</th>
-
-                                    <th>User Name</th>
-
-                                    <th>User Department</th>
-
-                                    <th>User Rank</th>
+                                    <th>Name</th>
                                     
                                     <th>Select</th>
                                     
@@ -60,26 +54,17 @@
                                     <tbody>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
-                                    java.util.ArrayList<uta.cse4361.businessobjects.AdvisorAccount> accounts = dm.getAccounts(); 
-                                    for(uta.cse4361.businessobjects.AdvisorAccount a: accounts) {
+                                    java.util.ArrayList<AccountType> accounts = dm.getAccountTypes(); 
+                                    for(AccountType a: accounts) {
                                         out.print("<tr>");
                                         out.print("<td>");
                                         out.print(a.getID());
-                                        out.print("</td>");
-                                        out.print("<td>");                                       
-                                        out.print(a.getEmail());
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print(a.getName() );
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print(a.getDepartment());
-                                        out.print("</td>");
-                                        out.print("<td>");
-                                        out.print(a.getRank());
-                                        out.print("</td>");
-                                        out.print("<td>");
-                                        out.print("<input type='radio' name='email' value='" + a.getEmail() +"'>");
+                                        out.print("<input type='radio' name='email' value='" + a.getID() +"'>");
                                         out.print("</td>");
                                         out.print("</tr>");
                                         out.print("</script>");
@@ -88,11 +73,10 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                   <input type="submit" value="Modify Account" id="submitBtn" class="btn btn-default" />
-                                   <button type="button" value="Create Account" id="createActBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='CreateAccount.jsp';" >Create Account</button>
-                                    <button type="button" value="Create Account" id="createActBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='manageAccountTypes.jsp';" >Manage Account Types</button>
+                                   <input type="submit" value="Modify Account Type" name="action" value="Update" id="submitBtn" class="btn btn-default" />
+                                   <input type="submit" value="Delete Account Type" name="action" value="Delete" class="btn btn-default"/>
+                                   <button type="button" value="Create Account" id="createTypeBtn" 
+                                           class ="btn btn-default" onclick="window.location.href='CreateAccountType.jsp';" >Create Account Type</button>
                                 </form>
                             </div>
 

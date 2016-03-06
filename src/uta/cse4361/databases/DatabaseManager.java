@@ -16,6 +16,7 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.StudentAccount;
 import uta.cse4361.businessobjects.AppointmentType;
+import uta.cse4361.businessobjects.AccountType;
 
 /**
  *
@@ -184,5 +185,13 @@ public class DatabaseManager {
     
     public AdvisorAccount getAdvisor(int id){
         return imp.getAdvisor(id);
+    }
+    
+    public ArrayList<AccountType> getAccountTypes(){
+        return imp.getAccountTypes();
+    }
+    
+    public AccountType getAccountType(int id){
+        return imp.getAccountType(id);
     }
 }

@@ -15,6 +15,7 @@ import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.AppointmentType;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.StudentAppointment;
+import uta.cse4361.businessobjects.AccountType;
 
 /**
  *
@@ -279,5 +280,19 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         getAdvisor.execute();
         return (AdvisorAccount)getAdvisor.getResult();
                 
+    }
+    
+    @Override
+    public ArrayList<AccountType> getAccountTypes(){
+        RDBImplCommand getAccountTypes = new GetAccountTypes();
+        getAccountTypes.execute();
+        return (ArrayList<AccountType>)getAccountTypes.getResult();
+    }
+    
+    @Override 
+    public AccountType getAccountType(int id){
+        RDBImplCommand getAccountType = new GetAccountType(id);
+        getAccountType.execute();
+        return (AccountType)getAccountType.getResult();
     }
 }

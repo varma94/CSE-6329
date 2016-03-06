@@ -15,6 +15,7 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.StudentAccount;
 import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.AppointmentType;
+import uta.cse4361.businessobjects.AccountType;
 
 public interface DatabaseImpInterface {
     public String saveSlots(ArrayList<Slot> slots);
@@ -54,5 +55,7 @@ public interface DatabaseImpInterface {
     public AdvisorAccount getAdvisor(int id);
     public ArrayList<Slot> getAvailSlots(int advisorID, int apptType);
     public ArrayList<Slot> getApptSlots(int advisorID, int apptType);
+    public ArrayList<AccountType> getAccountTypes();
+    public AccountType getAccountType(int id);
     
 }
