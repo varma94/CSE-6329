@@ -22,7 +22,7 @@ public class CreateStudentAccountBean {
     private int ID= 0;
     private String tempPassword = null;
     private int rank = 2;
-
+    private int lognum =0;
     public CreateStudentAccountBean() {
     }
 
@@ -31,7 +31,7 @@ public class CreateStudentAccountBean {
        String returnMessage = SUCCESS_MESSAGE;
        
        StudentAccount AA = new StudentAccount();
-       boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank);
+       boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank, this.lognum);
        if (a == false)
            return "Create Advisor Fail";
        DatabaseManager dm = new DatabaseManager();
@@ -53,7 +53,10 @@ public class CreateStudentAccountBean {
     public int getID() {
         return ID;
     }
-
+    public int getLognum() {
+        return lognum;
+    }
+    
     public String getTempPassword() {
         return tempPassword;
     }
@@ -66,6 +69,10 @@ public class CreateStudentAccountBean {
         this.name = name;
     }
 
+    public void setLognum(int lognum) {
+        this.lognum = lognum;
+    }
+    
     public void setEmail(String email) {
         this.email = email;
     }

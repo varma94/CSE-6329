@@ -21,6 +21,7 @@ public class ModifyAccountBean implements Constants{
     private String department;
     private int ID;
     private int rank;
+    private int lognum;
     
     public ModifyAccountBean(){
         
@@ -35,7 +36,7 @@ public class ModifyAccountBean implements Constants{
         if(remove == true){
             returnMessage = databaseManager.deleteAccount(this.ID);
         } else {
-            result = acct.initialize(this.name, this.email, this.department, this.ID, this.rank);
+            result = acct.initialize(this.name, this.email, this.department, this.ID, this.rank,this.lognum);
             if (result == true){
                 returnMessage = databaseManager.modifyAccount(this.ID, acct);
             }else 
@@ -66,6 +67,9 @@ public class ModifyAccountBean implements Constants{
     public int getRank(){
         return rank;
     }
+    public int getLogNum(){
+        return lognum;
+    }
     
     //setters
     public void setRemove(boolean remove){
@@ -73,6 +77,9 @@ public class ModifyAccountBean implements Constants{
     }
     public void setName(String name){
         this.name = name;
+    }
+    public void setLogNum(int lognum){
+        this.lognum = lognum;
     }
     public void setEmail(String email){
         this.email = email;

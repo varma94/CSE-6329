@@ -75,34 +75,34 @@
                         %>
                         <div class="form-group">
                             <label for="advisorName">Advisor</label>
-                            <input class="form-control" type="text" name="advisorName" size="50" id="advisorName" value = "<%=advisorName%>" readonly="true">
+                            <input class="form-control" type="text" name="advisorName" size="50" id="advisorName" value = "<%=advisorName%>">
                         </div>
                         <div class="form-group">
                             <label for="advisingType">Advising Type</label>
-                            <input class="form-control" type="text" name="advisingType" size="50" id="advisingType" value = "<%=type%>" readonly="true">
+                            <input class="form-control" type="text" name="advisingType" size="50" id="advisingType" value = "<%=type%>">
                         </div>
                         <div class="form-group">
                             <label for="studentName">Student Name</label>
-                            <input class="form-control" type="text" name="studentName" size="50" id="studentName" value = "<%=studentName%>" readonly="true">
+                            <input class="form-control" type="text" name="studentName" size="50" id="studentName" value = "<%=studentName%>">
                             <input type="hidden" name="studentID" size="50" id="studentID" value = "<%=studentID%>" readonly="true">
                         </div>
                         <div class="form-group">
                             <label for="studentName">Student Major</label>
-                            <input class="form-control" type="text" name="studentMajor" size="50" id="major" value = "<%=studentMajor%>" readonly="true">
+                            <input class="form-control" type="text" name="studentMajor" size="50" id="major" value = "<%=studentMajor%>">
                         </div>
                         <div class="form-group">
                             <label for="date">Date</label>    
-                            <input class="form-control" type="text" name="date" size="50" id="date" value = "<%=date%>" readonly="true">
+                            <input class="form-control" type="text" name="date" size="50" id="date" value = "<%=date%>">
                         </div>
                         <div class="form-group">
                             <label for="startTime">Start Time</label>
 
-                            <input class="form-control" type="text" name="startTime" size="50" id="startTime" value = "<%=startTime%>" readonly="true">
+                            <input class="form-control" type="text" name="startTime" size="50" id="startTime" value = "<%=startTime%>">
                         </div>
                         <div class="form-group">
                             <label for="endTime">End Time</label>
 
-                            <input class="form-control" type="text" name="endTime" size="50" id="endTime" value = "<%=endTime%>" readonly="true">
+                            <input class="form-control" type="text" name="endTime" size="50" id="endTime" value = "<%=endTime%>">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>

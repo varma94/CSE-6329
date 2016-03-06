@@ -31,6 +31,7 @@ public class StudentAdvisor extends RDBImplCommand {
             statement.setString(3, sa.getName());
             statement.setString(4, sa.getDepartment());
             statement.setInt(5, sa.getRank());
+            statement.setInt(6, sa.getLogNum());
             statement.executeUpdate();
             processResult();
         }

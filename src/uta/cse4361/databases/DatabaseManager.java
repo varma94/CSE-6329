@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
+import uta.cse4361.businessobjects.StudentAppointment;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.SlotFactory;
 import uta.cse4361.businessobjects.AdvisorAccount;
@@ -45,9 +46,25 @@ public class DatabaseManager {
         return appointments;
     }
     
+    public ArrayList<StudentAppointment> getStudentAppointments(String email) {
+        
+        ArrayList<StudentAppointment> appointments = imp.getStudentAppointments(email);
+       // Collections.sort(appointments);
+        return appointments;
+    }
+    
+   
+    
+  
     public Appointment getAppointment(int apptID) {
         return imp.getAppointment(apptID);
     }
+    
+    public StudentAppointment getStudentAppointment(int apptID) {
+        return imp.getStudentAppointment(apptID);
+    }
+    
+   
     
     public String saveSlots(ArrayList<Slot> slots) {
         return imp.saveSlots(slots);
@@ -58,11 +75,16 @@ public class DatabaseManager {
     public String modifyAppointment(int id, Appointment appt) {
         return imp.modifyAppointment(id, appt);
     }
+    public String modifyStudentAppointment(int id, StudentAppointment appt) {
+        return imp.modifyStudentAppointment(id, appt);
+    }
+    
     
     public String modifyAccount(int id, AdvisorAccount account)
     {
     	return imp.modifyAccount(id,account);
     }
+    
      public String studentModifyAccount(String id, StudentAccount account)
     {
     	return imp.studentModifyAccount(id,account);
@@ -85,7 +107,6 @@ public class DatabaseManager {
         Collections.sort(avail);
         return avail;
     }
-    
     public ArrayList<Slot> getTypeSlots(int advisorID, int apptTypeID){
         ArrayList<Slot> avail = imp.getAvailSlots(advisorID, apptTypeID);
         ArrayList<Slot> appt = imp.getApptSlots(advisorID, apptTypeID);
@@ -120,9 +141,9 @@ public class DatabaseManager {
         return imp.getAccount(email);
     }
     
-     public StudentAccount getStudentAccount(String email){
-        return imp.getStudentAccount(email);
-    }
+    //public StudentAccount getStudentAccount(String email){
+    //    return imp.getStudentAccount(email);
+    //}
      
     
     public ArrayList<AdvisorAccount> getAccounts(){

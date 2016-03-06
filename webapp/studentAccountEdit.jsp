@@ -43,7 +43,7 @@
 
                         DatabaseManager dm = new DatabaseManager();
                         if (request.getParameter("email") == null || request.getParameter("email") == "" || request.getParameter("email").equals("")) {
-                            //response.sendRedirect("modifyAppointment.jsp");
+                            response.sendRedirect("modifyAppointment.jsp");
                         }
                         else 
                         {

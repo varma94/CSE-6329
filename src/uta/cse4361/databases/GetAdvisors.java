@@ -49,9 +49,10 @@ class GetAdvisors extends RDBImplCommand {
                 String userName = resultSet.getString("UserName");
                 String userDepartment = resultSet.getString("UserDepartment");
                 int userRank = resultSet.getInt("UserRank");
+                int lognum = resultSet.getInt("lognum");
 
                 account.setID(id);
-                if (account.initialize(userName, userEmail, userDepartment, id, userRank)) 
+                if (account.initialize(userName, userEmail, userDepartment, id, userRank, lognum)) 
                 {
                     ((ArrayList<AdvisorAccount>) result).add(account);
                 }

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
+<%@page import  = "java.util.*"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -52,6 +53,14 @@ and open the template in the editor.
                                  out.print("<li class='account'>"
                                     + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
                                     + "</li>");
+                                 
+                            %>)
+                            <h3>Display Current Date & Time</h3>
+                            
+                            <%
+                                Date date = new Date();
+                                    out.print( "<h3 align=\"center\">" +date.toString()+"</h3>");
+                                
                             }
                             if (rank == 1){
                                 out.print("Welcome administrator.");
@@ -69,7 +78,7 @@ and open the template in the editor.
 
                     </div>
                             <%
-                            if(rank == -1){
+                            if(rank == 2){
                                 out.print("</td>"
                                         + "<td style='width: 640px'>"
                                         + "<div id='rightAccordion'>"

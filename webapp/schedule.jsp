@@ -124,6 +124,9 @@
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
+                
+                
+                
                 if (isNaN(sID)) {
                     $("#sID").notify("Your student ID must be a number", "error",
                             {elementPosition: 'bottom center',
@@ -145,6 +148,7 @@
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
+                
                 if (sName === null || sName === "") {
                     $("#sName").notify("Please enter your name", "error",
                             {elementPosition: 'bottom center',
@@ -195,6 +199,10 @@
                         <input type="text"  name="email" id="email" value="" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="sID">Student ID</label>
+                        <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label for="sName">Student Name</label>
                         <input type="text" name="sName" id="sName" value="" class="form-control">
                     </div>
@@ -231,8 +239,7 @@
                     </div>
                     <div class="form-group">
                         <label for="date">Date</label>
-                        <input type="text" name="date"  id="date" 
-                               class="form-control">
+                        <input type="text" name="date"  id="date" readonly="readonly" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>

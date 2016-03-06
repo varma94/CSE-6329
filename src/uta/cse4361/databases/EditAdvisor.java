@@ -8,6 +8,7 @@ package uta.cse4361.databases;
 import java.sql.SQLException;
 
 import uta.cse4361.businessobjects.AdvisorAccount;
+import uta.cse4361.businessobjects.Appointment;
 
 /**
  *
@@ -17,7 +18,7 @@ public class EditAdvisor extends RDBImplCommand {
 
     private AdvisorAccount advisor;
     private int id;
-    private String sqlQuery = "update user set UserEmail = ?, UserName = ?, UserDepartment= ?, UserRank = ? Where UserID = ?";
+    private String sqlQuery = "update user set UserEmail = ?, UserName = ?, UserDepartment= ?, UserRank = ?, lognum = ? Where UserID = ?";
 
     public EditAdvisor(int id, AdvisorAccount advisor) {
         super();
@@ -34,6 +35,7 @@ public class EditAdvisor extends RDBImplCommand {
             statement.setString(3, advisor.getDepartment());
             statement.setInt(4, advisor.getRank());
             statement.setInt(5, id);
+            statement.setInt(6, advisor.getLogNum());
             statement.executeUpdate();
             processResult();
         } catch (SQLException e) {

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Appointment Created</title>
+        <title>Random password</title>
     </head>
     <body>
         <jsp:include page="/EmailServlet1"/>
@@ -19,7 +19,7 @@
         <div id="accordion" class="centerthis">
             <h3>Success</h3>
             <div>
-                Appointment has been created.
+                Password has been created.
             </div>
         </div>                   
         </div>

@@ -14,6 +14,7 @@ import uta.cse4361.businessobjects.StudentPasswordAccount;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.AppointmentType;
 import uta.cse4361.businessobjects.Slot;
+import uta.cse4361.businessobjects.StudentAppointment;
 
 /**
  *
@@ -57,6 +58,21 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
+    public String modifyStudentAppointment(int id, StudentAppointment appt) {
+        if (appt == null) {
+            RDBImplCommand deleteAppointment = new DeleteAppointment(id);
+            deleteAppointment.execute();
+            return (String)deleteAppointment.getResult();
+        } else {
+            RDBImplCommand editAppointment = new EditStudentAppointment(id, appt);
+            editAppointment.execute();
+            return (String)editAppointment.getResult();
+        }
+    }
+    
+   
+
+    @Override
     public String modifySlot(Date d, int startHour, int endHour, int startMin, int endMin, int slotID) {
         RDBImplCommand modifySlot = new DeleteSlot(d, startHour, endHour, startMin, endMin, slotID);
         modifySlot.execute();
@@ -72,11 +88,30 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
+    public ArrayList<StudentAppointment> getStudentAppointments(String email) {
+        RDBImplCommand getAppointments = new GetStudentAppointments(email);
+        getAppointments.execute();
+        return (ArrayList<StudentAppointment>) getAppointments.getResult();
+        
+    }
+    
+   
+
+    @Override
     public Appointment getAppointment(int apptID) {
         RDBImplCommand getAppointment = new GetAppointment(apptID);
         getAppointment.execute();
         return (Appointment) getAppointment.getResult();
     }
+    @Override
+    public StudentAppointment getStudentAppointment(int apptID) {
+  RDBImplCommand getAppointment = new GetStudentAppointment(apptID);
+        getAppointment.execute();
+        return (StudentAppointment) getAppointment.getResult();    
+    }
+
+    
+    
     
     @Override
     public ArrayList<Slot> getSlot(){
@@ -159,12 +194,6 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
             deleteAccount.execute();
             return (String)deleteAccount.getResult();
         }
-    @Override
-      public StudentAccount getStudentAccount(String email){
-        RDBImplCommand getAccount = new GetStudent(email);
-        getAccount.execute();
-        return (StudentAccount)getAccount.getResult();
-    }
 
 	@Override
 	public ArrayList<AdvisorAccount> getAccounts() {
@@ -181,11 +210,13 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
 	}
         
         @Override
-	public String studentModifyAccount(String id, StudentAccount studentAccount) {
-		RDBImplCommand studentModifyAccount = new EditStudent(id, studentAccount);
-		studentModifyAccount.execute();
-		return (String)studentModifyAccount.getResult();
+	public String studentModifyAccount(String id, StudentAccount account) {
+		RDBImplCommand modifyAccount = new EditStudent(id, account);
+		modifyAccount.execute();
+		return (String)modifyAccount.getResult();
 	}
+        
+        
         @Override
     public String studentValidate(String studentEmail, String studentPassword){
         RDBImplCommand validate = new StudentValidateLogin(studentEmail, studentPassword);

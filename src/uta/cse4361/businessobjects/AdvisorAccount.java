@@ -17,12 +17,13 @@ public class AdvisorAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    private int lognum;
     
     public AdvisorAccount(){
         
     }
     
-    public boolean initialize(String name, String email, String department, String tempPassword, int rank){
+    public boolean initialize(String name, String email, String department, String tempPassword, int rank, int lognum){
         boolean result = true;
         
         if(name != null && !name.isEmpty() && 
@@ -35,6 +36,7 @@ public class AdvisorAccount {
             this.department = department;
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
+            this.lognum = lognum;
         }
         else
         {
@@ -44,7 +46,7 @@ public class AdvisorAccount {
         return result;
     }
     
-    public boolean initialize(String name, String email, String department, int ID, int rank){
+    public boolean initialize(String name, String email, String department, int ID, int rank, int lognum){
         boolean result = true;
         
         if(name != null && !name.isEmpty() && 
@@ -56,6 +58,7 @@ public class AdvisorAccount {
             this.department = department;
             this.rank = rank;
             this.ID = ID;
+            this.lognum = lognum;
         }
         else
         {
@@ -87,6 +90,11 @@ public class AdvisorAccount {
         this.ID = ID;
     }
     
+    public void setLogNum(int lognum){
+        this.lognum = lognum;
+    }
+    
+    
     public void setTempPassword(String tempPassword){
         this.tempPassword = tempPassword;
     }
@@ -109,6 +117,10 @@ public class AdvisorAccount {
     
     public int getID(){
         return ID;
+    }
+    
+    public int getLogNum(){
+        return lognum;
     }
     
     public String getTempPassword(){

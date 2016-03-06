@@ -16,12 +16,13 @@ public class StudentAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    private int lognum;
     
     public StudentAccount(){
         
     }
     
-    public boolean initialize(String name, String email, String department, String tempPassword, int rank){
+    public boolean initialize(String name, String email, String department, String tempPassword, int rank,int lognum){
         boolean result = true;
         
         if(name != null && !name.isEmpty() && 
@@ -34,6 +35,7 @@ public class StudentAccount {
             this.department = department;
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
+            this.lognum = lognum;
         }
         else
         {
@@ -43,7 +45,7 @@ public class StudentAccount {
         return result;
     }
     
-    public boolean initialize(String name, String email, String department, int ID, int rank){
+    public boolean initialize(String name, String email, String department, int ID, int rank,int lognum){
         boolean result = true;
         
         if(name != null && !name.isEmpty() && 
@@ -54,6 +56,7 @@ public class StudentAccount {
             this.email = email;
             this.department = department;
             this.rank = rank;
+            this.lognum = lognum;
         }
         else
         {
@@ -93,8 +96,15 @@ public class StudentAccount {
         this.rank = rank;
     }
     
+    public void setLogNum(int lognum){
+        this.lognum = lognum;
+    }
+    
     public String getName(){
         return name;
+    }
+    public int getLogNum(){
+        return lognum;
     }
     
     public String getEmail(){

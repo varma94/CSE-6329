@@ -30,16 +30,17 @@
                 var atpos = email.indexOf("@");
                 var dotpos = email.lastIndexOf(".");
                 var mavs = email.indexOf("mavs.uta.edu");
-                var password = document.forms["create"]["password"].value;
-                var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
+                
+ //               var password = document.forms["create"]["password"].value;
+ //               var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
                 var name = document.forms["create"]["name"].value;
 
-//                if (username === null || username === "") {
-//                    $("#username").notify("Please enter your username", "error",
-//                            {elementPosition: 'bottom center',
-//                                globalPosition: 'bottom center'})
-//                    return false;
-//                }
+                if (username === null || username === "") {
+                    $("#username").notify("Please enter your username", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
                 if (email === null || email === "") {
                     $("#email").notify("Please enter your email", "error",
                             {elementPosition: 'bottom center',
@@ -100,15 +101,19 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" type="password" name="password" id="password" value="">
+                        <input class="form-control" type="hidden" name="password" id="password" value="@abc124">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="passwordConfirm">Confirm Password</label>
                         <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" value="">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" id="name" value="">
+                    </div>
+                    <div class="form-group">
+                        
+                        <input class="form-control" type="hidden" name="lognum" id="lognum" value="0">
                     </div>
                     <div class="form-group">
                         <label for="dept">Department</label>

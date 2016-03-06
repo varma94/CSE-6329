@@ -31,6 +31,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
         int totalMinutes = (hours * 60) + endMinute + (60 - startMinute);
         int numOfFlyweights = totalMinutes/increment;
         return numOfFlyweights;
+        
     }
 
     private void updateTimes(int increment ) 

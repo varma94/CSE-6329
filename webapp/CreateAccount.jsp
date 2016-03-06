@@ -37,6 +37,7 @@
                 var mavs = email.indexOf("mavs.uta.edu");
                 var password = document.forms["create"]["password"].value;
                 var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
+                
                 var name = document.forms["create"]["name"].value;
 
 //                if (username === null || username === "") {
@@ -111,6 +112,10 @@
                         <label for="passwordConfirm">Confirm Password</label>
                         <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" value="">
                     </div>
+                    <div class="form-group">
+                        
+                        <input class="form-control" type="hidden" name="lognum" id="lognum" value="0">
+                    </div> 
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" id="name" value="">

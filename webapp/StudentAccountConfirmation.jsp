@@ -13,6 +13,7 @@
         <jsp:setProperty name="newadvisor" property="tempPassword" value='<%=request.getParameter("password")%>' />
         <jsp:setProperty name="newadvisor" property="department" value='<%=request.getParameter("dept")%>' />
         <jsp:setProperty name="newadvisor" property="name" value='<%=request.getParameter("name")%>' />
+         <jsp:setProperty name="newadvisor" property="lognum" value='<%=Integer.parseInt(request.getParameter("lognum"))%>' />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Account Confirmation</title>
     </head>
@@ -41,9 +42,12 @@
                 <h3>Account Confirmation</h3>
                 <div>
                 <%
+                    String email = request.getParameter("email");
+                    String password = request.getParameter("password");
                     String result = newadvisor.Advisor();
                     if (result == "") {
                         out.print(newadvisor.getName() +"'s has been Account created");
+                        response.sendRedirect("RandomPassword.jsp?email="+email+"&password="+password);
                     } 
                     else {
                         out.print("Account could not be created.");

@@ -34,13 +34,21 @@
                         + "<a href='DeleteAccount.jsp' >Accounts</a>"
                         + "</li>");
             }
+            
+            
+            
+            
          if (rank == 2){
                 
+             //String email = request.getParameter("username");
                 out.print("<li class='account'>"
                         + "<a href='studentAccountEdit.jsp' >Edit Account</a>"
                         + "</li>");
                 out.print("<li class='account'>"
                         + "<a href='PasswordManagement.jsp' >Password Change</a>"
+                        + "</li>");
+                out.print("<li class='account'>"
+                        + "<a href='StudentModifyAppointment.jsp?email=tracy@mavs.uta.edu' >Edit Appointment</a>"
                         + "</li>");
             }
             

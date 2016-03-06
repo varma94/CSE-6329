@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
+<%@page import="uta.cse4361.businessobjects.EmailServlet1"%>
 <%@page import="uta.cse4361.businessobjects.AppointmentType" %>
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount" %>
 <%@page import="uta.cse4361.businessobjects.Slot" %>
@@ -16,7 +17,6 @@
     <head>
     	<script>
 			//Create timeout script
-                        
 			<%
 			String clock = request.getParameter( "clock" );
 			if( clock == null ) clock = "600";
@@ -236,12 +236,21 @@
                                                 	mex.printStackTrace(); 
                                                 	result_delivery = "Sending failed...."; 
                                                 } */
-                                                response.sendRedirect("AppointmentDetails.jsp");
+                                                
+                                                String email = request.getParameter("email");
+                                                String adName = request.getParameter("aName");
+                                                String tos = request.getParameter("type");
+                                                String date = request.getParameter("date");
+                                                String time = request.getParameter("startTime");
+                                                response.sendRedirect("AppointmentDetails.jsp?email="+email+"&aName="+adName+"&type="+tos+"&date="+date+"&startTime="+time);
+                                                
                                             }
                                             else{
                                                 out.println(result);
                                             }
                                         }%>
+                                        
+                                        
                                 </div>                              
                         </div>
 

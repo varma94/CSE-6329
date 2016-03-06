@@ -44,8 +44,9 @@ public class GetStudent extends RDBImplCommand{
                 String department = resultSet.getString("UserDepartment");
                 int ID = resultSet.getInt("UserID");
                 int rank = resultSet.getInt("UserRank");
+                int lognum = resultSet.getInt("lognum");
                 result = new StudentAccount();
-                ((StudentAccount)result).initialize(name, email, department, ID, rank);
+                ((StudentAccount)result).initialize(name, email, department, ID, rank,lognum);
             }
             else{
                 result = null;
