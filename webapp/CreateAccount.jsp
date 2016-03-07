@@ -146,7 +146,9 @@
                     <%
                                 java.util.ArrayList<AccountType> types = dm.getAccountTypes();
                                 for (AccountType type : types){ 
-                                    out.print("<option value='" + type.getID() + "'>" + type.getName() + "</option>");
+                                    if (type.getPrivilege() !=0 && type.getPrivilege()!=2){
+                                        out.print("<option value='" + type.getID() + "'>" + type.getName() + "</option>");
+                                    }
                                 }
                                 %>
                                 

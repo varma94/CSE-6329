@@ -44,7 +44,7 @@ public class ValidateLogin extends RDBImplCommand {
             if(resultSet.next()){
                 int ID = resultSet.getInt("UserID");
                 int rank = resultSet.getInt("UserRank");
-                result = "" + ID + rank;
+                result = "" + ID +"," + rank;
             }
         }
         catch(SQLException e){

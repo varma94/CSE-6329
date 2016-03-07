@@ -13,6 +13,7 @@
         <jsp:setProperty name="newadvisor" property="tempPassword" value='<%=request.getParameter("password")%>' />
         <jsp:setProperty name="newadvisor" property="department" value='<%=request.getParameter("dept")%>' />
         <jsp:setProperty name="newadvisor" property="name" value='<%=request.getParameter("name")%>' />
+        <jsp:setProperty name="newadvisor" property="rank" value='<%=Integer.parseInt(request.getParameter("accountType"))%>' />
         <jsp:setProperty name="newadvisor" property="logNum" value='<%=Integer.parseInt(request.getParameter("lognum"))%>' />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Account Confirmation</title>

@@ -16,7 +16,7 @@ public class RegisterAdvisor extends RDBImplCommand {
     
     private AdvisorAccount aa;
     private String sqlQuery = "INSERT INTO USER(UserEmail, UserPassword,"
-            + " UserName, UserDepartment, UserRank) VALUES (?, ?, ?, ?, ?)";
+            + " UserName, UserDepartment, UserRank, lognum) VALUES (?, ?, ?, ?, ?, ?)";
     public RegisterAdvisor(AdvisorAccount aa){
         this.aa = aa;
     }
@@ -30,6 +30,7 @@ public class RegisterAdvisor extends RDBImplCommand {
             statement.setString(3, aa.getName());
             statement.setString(4, aa.getDepartment());
             statement.setInt(5, aa.getRank());
+            statement.setInt(6, aa.getLogNum());
             statement.executeUpdate();
             processResult();
         }

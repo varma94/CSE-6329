@@ -63,11 +63,9 @@
                         + "<a href='modifyAppointment.jsp' >Appointment</a>"
                         + "</li>");
             }
-            if (rank == 1 || rank == 0 || rank==2){
                 out.print("<li class='logout'>"
                         + "<a href='logout.jsp' >Log Out</a>"
                         + "</li>");
-            }
         }
         if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)){
             out.print("<li class='schedule'>"

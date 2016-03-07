@@ -7,7 +7,6 @@ package uta.cse4361.beans;
 
 import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.databases.DatabaseManager;
-import uta.cse4361.databases.RelationalDatabaseImpl;
 import uta.cse4361.interfaces.Constants;
 
 /**
@@ -22,20 +21,19 @@ public class CreateAdvisorAccountBean implements Constants{
     private String tempPassword = null;
     private int rank = 0;
     private int logNum =0;
+    private int accountType;
 
     public CreateAdvisorAccountBean() {
     }
 
     
     public String Advisor(){
-       String returnMessage = SUCCESS_MESSAGE;
-       
        AdvisorAccount AA = new AdvisorAccount();
        boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank, this.logNum);
        if (a == false)
            return this.CREATE_ADVISOR_FAIL;
        DatabaseManager dm = new DatabaseManager();
-       returnMessage = dm.register(AA);
+       String returnMessage = dm.register(AA);
        return returnMessage;
     }
     public String getName() {
@@ -64,6 +62,10 @@ public class CreateAdvisorAccountBean implements Constants{
 
     public int getRank() {
         return rank;
+    }
+    
+    public int getAccountType(){
+        return accountType;
     }
 
     public void setName(String name) {
@@ -94,6 +96,8 @@ public class CreateAdvisorAccountBean implements Constants{
         this.rank = rank;
     }
     
-    
+    public void setAccountType(int type){
+        this.accountType = type;
+    }
     
 }

@@ -44,8 +44,12 @@ and open the template in the editor.
                             }
                             %>
                     <div id='centerAccordion'>
-                       
-                        <h3>Faculty and Student Login</h3>
+                        <%
+                            if(session.getAttribute("id") == null){
+                                out.print("<h3>Faculty and Student Login</h3>");
+                            }
+                            %>
+                        
                         <div>
                             <%
                             if (rank == -1){
@@ -55,15 +59,22 @@ and open the template in the editor.
                                 
                             }
                             if (rank == 1){
-                                out.print("Welcome administrator.");
+                                out.print("<h3>Welcome administrator.</h3>");
                             }
                             if (rank == 0){
-                                out.print("Welcome faculty member.");
+                                out.print("<h3>Welcome Advisor</h3>");
                             }
                             if(rank == 2)
                             {
-                                out.print("Welcome Student");
+                                out.print("<h3>Welcome Student</h3>");
                             }
+                            if (rank == 3){
+                                out.print("<h3>Welcome Lead Advisor</h3>");
+                            }
+                            if (rank == 4){
+                                out.print("<h3>Welcome Staff</h3>");
+                            }
+                            
                             
                             //Abhijeet Chopra Mar 7: Moved clock out of if statement as needed on every user type's main page
                             response.setIntHeader("Refresh", 30); //Abhijeet Chopra Mar 7: Refreshing page every 30 seconds to update clock

@@ -5,7 +5,7 @@ $("#loginBtn").on('click', function () {
         title: "Login",
         message: "<form role='form' id='loginform' method='POST' action='LoginValidation.jsp' onsubmit='return validate()'>"
                 + "<div class='form-group'>"
-                + "<label for='username'>Username</label>"
+                + "<label for='username'>User Email</label>"
                 + "<input class='form-control' type='text' name='username' id='username' value=''>"
                 + "</div>"
                 + "<div class='form-group'>"
