@@ -44,9 +44,12 @@ and open the template in the editor.
                             }
                             %>
                     <div id='centerAccordion'>
-                        <%
+                            <%
                             if(session.getAttribute("id") == null){
                                 out.print("<h3>Faculty and Student Login</h3>");
+                            }
+                            else{
+                                out.print("<h3>Login</h3>");
                             }
                             %>
                         
@@ -55,8 +58,8 @@ and open the template in the editor.
                             if (rank == -1){
                                 out.print("Would you like to check on your current schedule?<br><br>"
                                         + "<input type='submit' value='Login to your account' id='loginBtn' class='btn btn-default'>"
-                                        + " <a href='CreateStudentAccount.jsp' class='btn btn-default' >Create Account</a><br><br>");
-                                
+                                        + " <input type='button' value='Create Account' onClick=window.location='CreateStudentAccount.jsp' class='btn btn-default' ><br><br>");
+                                        
                             }
                             if (rank == 1){
                                 out.print("<h3>Welcome administrator.</h3>");

@@ -112,7 +112,6 @@
                         <input class="form-control" type="text" name="name" id="name" value="">
                     </div>
                     <div class="form-group">
-                        
                         <input class="form-control" type="hidden" name="lognum" id="lognum" value="0">
                     </div>
                     <div class="form-group">

@@ -23,7 +23,7 @@
         
         <ul class="navigation">
             <li>
-                <input id="mysearch" type="search" style="height:40px;  font-family: sans-serif; background-color:#00204c; color:#fff; border:solid 1px #aaa;" placeholder="Search..."/>
+                <input id="mysearch" type="search"  placeholder="Search..."/>
             </li>
             <li>
                 <select id="dynamic_select" style="font-family: sans-serif; background-color:#00204c; color:#aaa; border:solid 1px #aaa;">
