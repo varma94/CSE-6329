@@ -48,6 +48,8 @@
 
                                     <th>Name</th>
                                     
+                                    <th>Privilege</th>
+                                    
                                     <th>Select</th>
                                     
                                     </thead>
@@ -62,6 +64,9 @@
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print(a.getName() );
+                                        out.print("</td>");
+                                        out.print("<td>");
+                                        out.print(a.getPrivilegeText());
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print("<input type='radio' name='id' value='" + a.getID() +"'>");

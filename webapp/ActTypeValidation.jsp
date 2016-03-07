@@ -12,6 +12,7 @@
         <title>Create New Account Type</title>
         <jsp:useBean id="newActType" class="uta.cse4361.beans.CreateActTypeBean"/> 
         <jsp:setProperty name="newActType" property="name" value='<%=request.getParameter("name")%>' />
+        <jsp:setProperty name="newActType" property="privilege" value='<%=Integer.parseInt(request.getParameter("privilege"))%>' />
     </head>
     <body>
          <jsp:include page="navigationbar.jsp" />

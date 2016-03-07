@@ -43,7 +43,8 @@ public class GetAccountTypes extends RDBImplCommand{
             {
                 int id = resultSet.getInt("TypeID");
                 String name = resultSet.getString("TypeName");
-                ((ArrayList<AccountType>) result).add(new AccountType(id, name));
+                int privilege = resultSet.getInt("privilege");
+                ((ArrayList<AccountType>) result).add(new AccountType(id, name, privilege));
             }
         } catch (SQLException e) {
             System.out.println("GetAccountType process result failed");

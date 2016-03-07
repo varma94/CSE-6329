@@ -13,10 +13,12 @@ import java.sql.SQLException;
  */
 public class CreateAccountType extends RDBImplCommand{
     private String name;
-    private String sqlQuery = "INSERT INTO USERTYPES(TypeName) VALUES (?)";
+    private int privilege;
+    private String sqlQuery = "INSERT INTO USERTYPES(TypeName, privilege) VALUES (?, ?)";
     
-    public CreateAccountType(String name){
+    public CreateAccountType(String name, int privilege){
         this.name = name;
+        this.privilege = privilege;
     }
     
     @Override
@@ -24,6 +26,7 @@ public class CreateAccountType extends RDBImplCommand{
         try{
             statement = conn.prepareStatement(sqlQuery);
             statement.setString(1, name);
+            statement.setInt(2, privilege);
             statement.executeUpdate();
             processResult();
         }

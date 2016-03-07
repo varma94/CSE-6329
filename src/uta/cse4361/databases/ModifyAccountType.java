@@ -15,12 +15,14 @@ class ModifyAccountType extends RDBImplCommand {
 
     private String name;
     private int id;
-    private String sqlQuery = "update USERTYPES set TypeName = ? Where TypeID = ?";
+    private int privilege;
+    private String sqlQuery = "update USERTYPES set TypeName = ?, privilege = ? Where TypeID = ?";
 
-    public ModifyAccountType(int id, String name) {
+    public ModifyAccountType(int id, String name, int privilege) {
         super();
         this.name = name;
         this.id = id;
+        this.privilege = privilege;
     }
 
     @Override
@@ -28,7 +30,8 @@ class ModifyAccountType extends RDBImplCommand {
         try {
             statement = conn.prepareStatement(sqlQuery);
             statement.setString(1, name);
-            statement.setInt(2, id);
+            statement.setInt(2, privilege);
+            statement.setInt(3, id);
             statement.executeUpdate();
             processResult();
         } catch (SQLException e) {

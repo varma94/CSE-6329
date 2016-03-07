@@ -74,15 +74,16 @@ NOT IN (SELECT SlotID FROM APPTSLOT);
 CREATE TABLE USERTYPES(
     TypeID INTEGER NOT NULL AUTO_INCREMENT,
     TypeName VARCHAR(30) NOT NULL,
+    privilege INTEGER DEFAULT 2,
     PRIMARY KEY (TypeID)
 );
 
-INSERT INTO USERTYPES (TypeID, TypeName) 
-VALUES (0, 'Advisor'),
-(1, 'Administrator'),
-(2, 'Student'),
-(3, 'Lead Advisor'),
-(4, 'Staff');
+INSERT INTO USERTYPES (TypeID, TypeName, privilege) 
+VALUES (1, 'Advisor', 1),
+(0, 'Administrator', 0),
+(2, 'Student', 2),
+(3, 'Lead Advisor', 3),
+(4, 'Staff', 4);
 
 CREATE TABLE APPOINTMENTTYPES(
     ApTypeID INTEGER NOT NULL AUTO_INCREMENT,

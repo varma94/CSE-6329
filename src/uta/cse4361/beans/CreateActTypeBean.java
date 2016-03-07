@@ -12,6 +12,7 @@ import uta.cse4361.databases.DatabaseManager;
  */
 public class CreateActTypeBean {
     private String name = null;
+    private int privilege = 2;
     
     public CreateActTypeBean(){
         
@@ -21,13 +22,21 @@ public class CreateActTypeBean {
         return name;
     }
     
+    public int getPrivilege(){
+        return privilege;
+    }
+    
     public void setName(String name){
         this.name = name;
     }
     
+    public void setPrivilege(int privilege){
+        this.privilege = privilege;
+    }
+    
     public String createActType(){
         DatabaseManager dm = new DatabaseManager();
-        String msg = dm.createAccountType(name);           
+        String msg = dm.createAccountType(name, privilege);           
         return msg;
     }
 }

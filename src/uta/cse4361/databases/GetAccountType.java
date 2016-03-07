@@ -44,7 +44,8 @@ public class GetAccountType extends RDBImplCommand{
             if(resultSet.next()){
                 String name = resultSet.getString("TypeName");
                 int ID = resultSet.getInt("TypeID");
-                result = new AccountType(ID, name);
+                int privilege = resultSet.getInt("privilege");
+                result = new AccountType(ID, name, privilege);
             }
             else{
                 result = null;

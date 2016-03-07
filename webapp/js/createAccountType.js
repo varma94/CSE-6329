@@ -8,6 +8,18 @@ $("#newActTypeBtn").on('click', function () {
                 + "<label for='name'>Name</label>"
                 + "<input class='form-control' type='text' name='name' id='name' value=''>"
                 + "</div>"
+        
+                + "<div class='form-group'>"
+                + "<label for='privilege'>Privilege</label>"
+                + "<select name='privilege' id='privilege' class='form-control' >"
+                    + "<option value='0'>Administrator</option>"
+                    + "<option value='1'>Advisor</option>"
+                    + "<option value='2'>Student</option>"
+                    + "<option value='3'>Lead Advisor</option>"
+                    + "<option value='4'>Staff</option>"
+                + "</select>"
+                + "</div>"
+        
                 + "</form>"
 //                + "<input type='submit' value='Login' id='loginBtn2' class='btn btn-default'>"
         ,

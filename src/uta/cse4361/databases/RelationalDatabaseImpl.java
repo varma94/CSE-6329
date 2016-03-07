@@ -297,8 +297,8 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
     
     @Override
-    public String createAccountType(String name){
-        RDBImplCommand createAccountType = new CreateAccountType(name);
+    public String createAccountType(String name, int privilege){
+        RDBImplCommand createAccountType = new CreateAccountType(name, privilege);
         createAccountType.execute();
         return (String)createAccountType.getResult();
     }
@@ -311,8 +311,8 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
     
     @Override
-    public String modifyAccountType(int id, String name){
-        RDBImplCommand modifyAccountType = new ModifyAccountType(id, name);
+    public String modifyAccountType(int id, String name, int privilege){
+        RDBImplCommand modifyAccountType = new ModifyAccountType(id, name, privilege);
         modifyAccountType.execute();
         return (String)modifyAccountType.getResult();
     }

@@ -195,15 +195,15 @@ public class DatabaseManager {
         return imp.getAccountType(id);
     }
     
-    public String createAccountType(String name){
-        return imp.createAccountType(name);
+    public String createAccountType(String name, int privilege){
+        return imp.createAccountType(name, privilege);
     }
     
     public String deleteAccountType(int id){
         return imp.deleteAccountType(id);
     }
     
-    public String modifyAccountType(int id, String name){
-        return imp.modifyAccountType(id, name);
+    public String modifyAccountType(int id, String name, int privilege){
+        return imp.modifyAccountType(id, name, privilege);
     }
 }

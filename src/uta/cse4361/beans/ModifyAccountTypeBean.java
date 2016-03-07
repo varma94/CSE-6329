@@ -14,6 +14,7 @@ import uta.cse4361.interfaces.Constants;
 public class ModifyAccountTypeBean implements Constants{
     private int acctTypeID;
     private String acctTypeName;
+    private int privilege = 2;
     private boolean remove = false;
     
     public ModifyAccountTypeBean(){
@@ -28,7 +29,7 @@ public class ModifyAccountTypeBean implements Constants{
         {
             returnMessage = databaseManager.deleteAccountType(acctTypeID);
         } else {
-            returnMessage = databaseManager.modifyAccountType(acctTypeID, acctTypeName);
+            returnMessage = databaseManager.modifyAccountType(acctTypeID, acctTypeName, privilege);
         }
         return returnMessage;
     }
@@ -47,6 +48,9 @@ public class ModifyAccountTypeBean implements Constants{
         this.acctTypeName = newName;
     }
     
+    public void setPrivilege(int privilege){
+        this.privilege = privilege;
+    }
     
     public boolean getRemove()
     {
@@ -60,6 +64,10 @@ public class ModifyAccountTypeBean implements Constants{
     
     public String getAcctTypeName() {
         return this.acctTypeName;
+    }
+    
+    public int getPrivilege(){
+        return this.privilege;
     }
     
 }

@@ -51,6 +51,7 @@
                             int id = Integer.parseInt(request.getParameter("id"));
                             AccountType acct = dm.getAccountType(id);
                             String name = acct.getName();
+                            int privilege = acct.getPrivilege();
                             boolean descriptionSubmitted = false;
                             boolean deleting = request.getParameter("action").equals("Delete Account Type");
                             
@@ -66,6 +67,17 @@
                             <label for="typeName">Name</label>
                             <input class="form-control" type="text" name="typeName" size="50" id="typeName" value = "<%=name%>">
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="privilege">Privilege</label>
+                            <select name="privilege" id="privilege" class="form-control" value ="<%=privilege%>" >
+                                <option value="0">Administrator</option>
+                                <option value="1">Advisor</option>
+                                <option value="2">Student</option>
+                                <option value="3">Lead Advisor</option>
+                                <option value="4">Staff</option>
+                            </select>
+                        </div>
                         <input type="hidden" value="false" name="remove">
                         <input type="submit" value="Edit Appointment Type" id="submitBtn" class="btn btn-default">
                     </form>
@@ -80,6 +92,7 @@
                         %>
                                 <jsp:setProperty name="macb" property="acctTypeName" value= '<%= request.getParameter("typeName")%>'/>
                                 <jsp:setProperty name="macb" property="remove" value= '<%=Boolean.parseBoolean(request.getParameter("remove"))%>'/>
+                                <jsp:setProperty name="macb" property="privilege" value= '<%=Integer.parseInt(request.getParameter("privilege"))%>'/>
 
                         <%
                             } else {

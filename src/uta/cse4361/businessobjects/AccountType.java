@@ -12,10 +12,13 @@ package uta.cse4361.businessobjects;
 public class AccountType {
     private int id;
     private String name;
+    private int privilege;
+    private static final String[] privilegeText = {"Administrator", "Advisor", "Student", "Lead Advisor", "Staff"};
     
-    public AccountType(int id, String name){
+    public AccountType(int id, String name, int privilege){
         this.id = id;
         this.name= name;
+        this.privilege = privilege;
     }
     
     public int getID(){
@@ -24,6 +27,14 @@ public class AccountType {
     
     public String getName(){
         return name;
+    }
+    
+    public int getPrivilege(){
+        return privilege;
+    }
+    
+    public String getPrivilegeText(){
+        return privilegeText[privilege];
     }
     
 }
