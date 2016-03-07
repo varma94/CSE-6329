@@ -302,4 +302,18 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         createAccountType.execute();
         return (String)createAccountType.getResult();
     }
+    
+    @Override
+    public String deleteAccountType(int id){
+        RDBImplCommand deleteAccountType = new DeleteAccountType(id);
+        deleteAccountType.execute();
+        return (String)deleteAccountType.getResult();
+    }
+    
+    @Override
+    public String modifyAccountType(int id, String name){
+        RDBImplCommand modifyAccountType = new ModifyAccountType(id, name);
+        modifyAccountType.execute();
+        return (String)modifyAccountType.getResult();
+    }
 }

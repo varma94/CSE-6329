@@ -58,5 +58,7 @@ public interface DatabaseImpInterface {
     public ArrayList<AccountType> getAccountTypes();
     public AccountType getAccountType(int id);
     public String createAccountType(String name);
+    public String deleteAccountType(int id);
+    public String modifyAccountType(int id, String name);
     
 }

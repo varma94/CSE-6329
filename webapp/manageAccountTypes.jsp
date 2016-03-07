@@ -40,7 +40,7 @@
 
                             <h3>Account Types</h3>
                             <div>
-                                <form  name="AccountForm" action="manageAccountTypes.jsp">
+                                <form  name="AccountForm" action="accountTypesEdit.jsp">
                                 <table class="display" id="appointmentList" cellpadding= "3" cellspacing= "0" >
                                     <thead>
 
@@ -64,7 +64,7 @@
                                         out.print(a.getName() );
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print("<input type='radio' name='email' value='" + a.getID() +"'>");
+                                        out.print("<input type='radio' name='id' value='" + a.getID() +"'>");
                                         out.print("</td>");
                                         out.print("</tr>");
                                         out.print("</script>");
@@ -73,8 +73,8 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                   <input type="submit" value="Modify Account Type" name="action" value="Update" id="submitBtn" class="btn btn-default" />
-                                   <input type="submit" value="Delete Account Type" name="action" value="Delete" class="btn btn-default"/>
+                                   <input type="submit" value="Modify Account Type" name="action" id="submitBtn" class="btn btn-default" />
+                                   <input type="submit" value="Delete Account Type" name="action" class="btn btn-default"/>
                                    <button type="button" value="Create Account" id='newActTypeBtn' class ="btn btn-default"  >Create Account Type</button>
                                 </form>
                             </div>
