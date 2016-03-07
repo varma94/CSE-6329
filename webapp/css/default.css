@@ -9,6 +9,8 @@ and open the template in the editor.
 */
 html{
     /*height:100%;*/
+    /*margin-bottom: 50px;*/
+    /*padding-bottom: 50px;*/
 }
 body { 
     /*height:100%;*/
@@ -28,7 +30,7 @@ body {
 
 #wrapper{
     width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto 80px;
     /*height: 1024px;*/
 
 }
@@ -40,12 +42,6 @@ header{
     display:inline-block;
     background-image: url("css/images/banner.png");
     background-repeat: no-repeat;
-}
-#footer{
-    /*display:block;*/
-    position: absolute;
-    height:60px;
-    bottom: 0;
 }
 
 #navbar{
@@ -142,12 +138,22 @@ select {
 }
 
 #footer{
-    position:relative;
-    bottom: -100px;
+    position:fixed;
+    display:block;
+    bottom: 0px;
+    margin: 0px auto 0px;
+    width:100%;
+    height:50px;
+    text-align: center;
+    background-color: #00204c;
 }
 #footer.clear{
     clear: both;
 }
 footer.clear{
     clear: both;
+}
+#footer .navigation 
+{
+    margin:0px 0px 0px;
 }

@@ -23,23 +23,19 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.javax.jar}</file>
+                    <file>${file.reference.jaf-1_1_1.zip}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.javax.mail-api-1.4.4.jar}</file>
+                    <file>${file.reference.javax.jar.zip}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.activation.jar}</file>
+                    <file>${file.reference.javamail1_4_5.zip}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.mail.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.javax.servlet-api-3.1.0.jar}</file>
+                    <file>${file.reference.javax.mail-api-1.4.4.jar.zip}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

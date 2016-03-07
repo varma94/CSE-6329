@@ -6,6 +6,8 @@
 
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
 <%@page import  = "java.util.*"%>
+<%@page import  = "java.io.*"%>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -38,28 +40,18 @@ and open the template in the editor.
                 <tr>
                     <%
                             if(rank == -1){
-                                out.print("<td style='width: 640px'>");
+                                out.print("<td style='width: 1280px'>"); // Abhijeet Chopra Mar 7: Changed width from 640px to 1280px
                             }
                             %>
-                    <div id='leftAccordion'>
+                    <div id='centerAccordion'>
                        
                         <h3>Faculty and Student Login</h3>
                         <div>
                             <%
                             if (rank == -1){
                                 out.print("Would you like to check on your current schedule?<br><br>"
-                                        + " <input type='submit' value='Login to your account' id='loginBtn' class='btn btn-default'>"
-                                        );
-                                 out.print("<li class='account'>"
-                                    + "<a href='CreateStudentAccount.jsp' >Create Account</a>"
-                                    + "</li>");
-                                 
-                            %>
-                            <h3>Display Current Date & Time</h3>
-                            
-                            <%
-                                Date date = new Date();
-                                    out.print( "<h3 align=\"center\">" +date.toString()+"</h3>");
+                                        + "<input type='submit' value='Login to your account' id='loginBtn' class='btn btn-default'>"
+                                        + " <a href='CreateStudentAccount.jsp' class='btn btn-default' >Create Account</a><br><br>");
                                 
                             }
                             if (rank == 1){
@@ -72,6 +64,12 @@ and open the template in the editor.
                             {
                                 out.print("Welcome Student");
                             }
+                            
+                            //Abhijeet Chopra Mar 7: Moved clock out of if statement as needed on every user type's main page
+                            response.setIntHeader("Refresh", 30); //Abhijeet Chopra Mar 7: Refreshing page every 30 seconds to update clock
+                            Date date = new Date();
+                            out.print( "<p align=\"center\">Current Date & Time : <b>" +date.toString()+"</b></p>");
+                            
                             %>
                   
                         </div>
@@ -98,9 +96,9 @@ and open the template in the editor.
 
 
         </div>
-
+        <jsp:include page='footer.jsp' />
     </body>
-    <jsp:include page='footer.jsp' />
+    
 
     <script type='text/javascript' src='js/index.js'></script>
 </html>

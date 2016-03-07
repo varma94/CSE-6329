@@ -30,6 +30,7 @@ $("#loginBtn").on('click', function () {
 });
 $("#leftAccordion").accordion({heightStyle: content});
 $("#rightAccordion").accordion({heightStyle: content});
+$("#centerAccordion").accordion({heightStyle: content}); //Abhijeet Chopra Mar 7: Created new id for center positioning
 //$("#scheduleBtn").button().click(function(){});
 
 
