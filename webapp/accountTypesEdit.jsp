@@ -53,7 +53,9 @@
                             String name = acct.getName();
                             int privilege = acct.getPrivilege();
                             boolean descriptionSubmitted = false;
-                            boolean deleting = request.getParameter("action").equals("Delete Account Type");
+                            boolean deleting = !(request.getParameter("action") == null) 
+                                    && !(request.getParameter("action") == "")
+                                    && request.getParameter("action").equals("Delete Account Type");
                             
                             descriptionSubmitted = !(request.getParameter("remove") == null || request.getParameter("remove") == "");
                         
