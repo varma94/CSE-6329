@@ -27,7 +27,6 @@ body {
     display:none
 }
 
-
 #wrapper{
     width: 1280px;
     margin: 0 auto 80px;
@@ -156,4 +155,15 @@ footer.clear{
 #footer .navigation 
 {
     margin:0px 0px 0px;
+}
+
+/*Abhijeet Chopra Mar 7: Style for searchbar*/
+#mysearch{
+    height:30px; 
+    line-height: 30px;
+    font-family: sans-serif;
+    background-color:#00204c;
+    color:#fff;
+    border:solid #aaa;
+    border-width: 0px 0px 1px 0px;
 }
