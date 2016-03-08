@@ -35,7 +35,8 @@
 			{
 				//document.forma.clock.value = "Time over";
 				alert("Timeout has occurred. Please try again");
-				window.location.assign("/AdvisingSched/");
+				//Abhijeet Chopra Mar 7: Corrected redirect link
+                                window.location.assign((window.location.href).slice(0,-12));
 				
 			}
 			}
