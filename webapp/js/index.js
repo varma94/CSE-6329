@@ -11,6 +11,7 @@ $("#loginBtn").on('click', function () {
                 + "<div class='form-group'>"
                 + "<label for='password'>Password</label>"
                 + "<input class='form-control' type='password' name='password' id='password' value=''>"
+                + "<input type='submit' style='display:none'/>"
                 + "</div>"
                 + "</form>"
 //                + "<input type='submit' value='Login' id='loginBtn2' class='btn btn-default'>"
