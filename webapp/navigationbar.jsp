@@ -31,7 +31,7 @@
         else{
             if (rank == 1){
                 out.print("<li class='account'>"
-                        + "<a href='DeleteAccount.jsp' >Accounts</a>"
+                        + "<a href='Accounts.jsp' >Accounts</a>"
                         + "</li>");
             }
             

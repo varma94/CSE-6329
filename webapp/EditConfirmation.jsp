@@ -72,7 +72,7 @@
                             }
                         	String success = macb.modifyAccount();
                                 if (success.equals("")) {
-                                    response.sendRedirect("DeleteAccount.jsp");
+                                    response.sendRedirect("Accounts.jsp");
                                 }
                             }
                         

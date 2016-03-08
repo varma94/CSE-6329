@@ -13,7 +13,7 @@ public class AccountType {
     private int id;
     private String name;
     private int privilege;
-    private static final String[] privilegeText = {"Administrator", "Advisor", "Student", "Lead Advisor", "Staff"};
+    private static final String[] privilegeText = {"Advisor", "Administrator", "Student", "Lead Advisor", "Staff"};
     
     public AccountType(int id, String name, int privilege){
         this.id = id;

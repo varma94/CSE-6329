@@ -73,8 +73,8 @@
                         <div class="form-group">
                             <label for="privilege">Privilege</label>
                             <select name="privilege" id="privilege" class="form-control" value ="<%=privilege%>" >
-                                <option value="0">Administrator</option>
-                                <option value="1">Advisor</option>
+                                <option value="0">Advisor</option>
+                                <option value="1">Administrator</option>
                                 <option value="2">Student</option>
                                 <option value="3">Lead Advisor</option>
                                 <option value="4">Staff</option>

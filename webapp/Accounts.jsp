@@ -52,7 +52,7 @@
 
                                     <th>User Department</th>
 
-                                    <th>User Rank</th>
+                                    <th>User Type</th>
                                     
                                     <th>Select</th>
                                     
@@ -76,7 +76,7 @@
                                         out.print(a.getDepartment());
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print(a.getRank());
+                                        out.print(dm.getAccountType(a.getRank()).getName());
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print("<input type='radio' name='email' value='" + a.getEmail() +"'>");

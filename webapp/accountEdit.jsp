@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount"%>
+<%@page import="uta.cse4361.businessobjects.AccountType"%>
 <%@page import="uta.cse4361.businessobjects.Appointment"%> <%-- Abhijeet Chopra Mar 8 --%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page import="uta.cse4361.databases.RelationalDatabaseImpl"%> <!-- Abhijeet Chopra Mar 8 -->
@@ -42,7 +43,7 @@
                     <%
                         DatabaseManager dm = new DatabaseManager();
                         if (request.getParameter("email") == null || request.getParameter("email") == "" || request.getParameter("email").equals("")) {
-                            response.sendRedirect("DeleteAccount.jsp");
+                            response.sendRedirect("Accounts.jsp");
                         } else {
                             String emailParam = request.getParameter("email");
                             AdvisorAccount appt = dm.getAccount(emailParam);
@@ -72,8 +73,16 @@
                             <input class="form-control" type="text" name="dept" size="50" id="dept" value = "<%=department%>">
                         </div>
                         <div class="form-group">
-                            <label for="userRank">Rank</label>
-                            <input class="form-control" type="text" name="rank" size="50" id="rank" value = "<%=userRank%>">
+                            <label for="rank">User Type</label>
+                            <select name="rank" id="rank" class="form-control" value="<%=userRank%>">
+                                <%
+                                    java.util.ArrayList<AccountType> types = dm.getAccountTypes();
+                                    for (AccountType type : types) {
+                                        out.print("<option value='" + type.getID() + "'>" + type.getName() + "</option>");
+                                    }
+                                %>
+
+                            </select>
                         </div>
 
                         <%
@@ -83,17 +92,21 @@
                         <input type="submit" value="Update Account" id="submitBtn" class="btn btn-default">
                         <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">
                         
-                        
-                        <input type="button" value="Delete Account" id="deleteBtn" class="btn btn-default" onClick="alert(deleteAccount('<%= adviserid %>'))">
+                    </form>
+                        <form method="submit" action="accountDelete.jsp">
+                        <%
+                            out.print("<input type='hidden' name='id' id='id' value='" + appt.getID() + "'>");
+                        %>
+
+                        <input type="hidden" value="true" name="remove"><br>
+                        <input type="submit" value="Delete Account" id="deleteBtn" class="btn btn-default">
+                    </form>
                         
                         <%
                             }
                         %>
                         </div>
-                        <div class="centerthis">
-
-                        </div>
-                    </form>
+                        
                 </div> 
             </div>
     </body>
