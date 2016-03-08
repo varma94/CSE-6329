@@ -66,8 +66,7 @@
                         </div>
                         <div class="form-group">
                             <label for="remarks">Feedback</label>
-                            <textarea class="form-control" name="remarks" id="remarks" rows="10">
-                            </textarea>
+                            <textarea class="form-control" name="remarks" id="remarks" rows="10"></textarea>
                         </div>
                         <div class="centerthis">
                             <input type="submit" value="Submit" id="submitBtn" class="btn btn-default">

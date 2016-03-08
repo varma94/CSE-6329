@@ -65,9 +65,8 @@
                             <input class="form-control" type="text" name="email" id="email" value="">
                         </div>
                         <div class="form-group">
-                            <label for="bugs">Describe the bugs and issues. Provide the page link where necessary.</label>
-                            <textarea class="form-control" name="bugs" id="bugs" rows="10">
-                            </textarea>
+                            <label for="bugs">Report Bugs/Issues</label>
+                            <textarea class="form-control" name="bugs" id="bugs" rows="10"></textarea>
                         </div>
                         <div class="centerthis">
                             <input type="submit" value="Submit" id="submitBtn" class="btn btn-default">

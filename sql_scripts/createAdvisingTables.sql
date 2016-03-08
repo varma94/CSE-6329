@@ -38,9 +38,12 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (UserID)
 );
 
-INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, lognum) 
-VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'CSE', 1, 0),
-('test@test.edu', '3556498', 'Test', 'CSE', 1, 0);
+INSERT INTO advising.`user` (`UserEmail`, `UserPassword`, `UserName`, `UserDepartment`, `UserRank`, lognum) 
+	VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'Computer Science', 1, 0),
+	VALUES ('lead.advisor@mavs.uta.edu', '3317596', 'Lead Advisor', 'Computer Science', 3, 0),
+	VALUES ('advisor@mavs.uta.edu', '-1131323456', 'Advisor', 'Computer Science', 0, 0),
+	VALUES ('staff@mavs.uta.edu', '109757152', 'Staff', 'Computer Science', 4, 0),
+	VALUES ('student@mavs.uta.edu', '-1879145925', 'Student', 'Computer Science', 2, 0);
 
 CREATE OR REPLACE VIEW APPTFW AS
 SELECT ApptID, ApptDate, ApptStartHour, ApptStartMin, ApptEndHour, ApptEndMin

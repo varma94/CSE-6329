@@ -88,11 +88,11 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                   <input type="submit" value="Modify Account" id="submitBtn" class="btn btn-default" />
-                                   <button type="button" value="Create Account" id="createActBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='CreateAccount.jsp';" >Create Account</button>
-                                    <button type="button" value="Create Account" id="createActBtn" 
-                                           class ="btn btn-default" onclick="window.location.href='manageAccountTypes.jsp';" >Manage Account Types</button>
+                                   <input type="submit" value="Modify This Account" id="submitBtn" class="btn btn-default" />
+                                   <button type="button" value="Create New Account" id="createActBtn" 
+                                           class ="btn btn-default" onclick="window.location.href='CreateAccount.jsp';" >Create New Account</button>
+                                   <button type="button" value="Manage Account Types" id="createActBtn" 
+                                           class ="btn btn-default" onclick="window.location.href='manageAccountTypes.jsp';" >Manage Account Types</button>      
                                 </form>
                             </div>
 

@@ -208,9 +208,13 @@
                     <div class="form-group">
                         <label for="major">Major</label>
                         <select name="major" id="major" class="form-control" >
-                            <option value="CSE">CSE</option>
-                            <option value="SE">SE</option>
-                            <option value="CPE">CPE</option>
+                            <option value="Bioengineering">Bioengineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Computer Science and Engineering">Computer Science /option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Industrial Engineering">Industrial Engineering</option>
+                            <option value="Materials Science">Materials Science</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
                             <option value="Undecided">Undecided</option>
                         </select>
                     </div>

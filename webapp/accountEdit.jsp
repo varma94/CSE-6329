@@ -7,6 +7,7 @@
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount"%>
 <%@page import="uta.cse4361.businessobjects.Appointment"%> <%-- Abhijeet Chopra Mar 8 --%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
+<%@page import="uta.cse4361.databases.RelationalDatabaseImpl"%> <!-- Abhijeet Chopra Mar 8 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,8 +52,8 @@
                             int userRank = appt.getRank();
                             //boolean descriptionSubmitted = !(request.getParameter("remove") == null || request.getParameter("remove") == "");
                             int adviserid=appt.getID(); // Abhijeet Chopra Mar 8: to get ID of the record from DB
-%>i
-                    <!------- added form abhijeet 06-Mar-2016 ---->
+%>
+                    <!-- Abhijeet Chopra Mar 6 -->
                     <form role="form" id="create"  onSubmit="return validate();" action="AccountModifyConfirmation.jsp" method="POST">
                         <div class="form-group">
                             <label for="userName" ID</label>
@@ -76,11 +77,18 @@
                         </div>
 
                         <%
-                            }
+                            //}
                         %>
                         <!------- Abhijeet 06-Mar-2016------------------>
                         <input type="submit" value="Update Account" id="submitBtn" class="btn btn-default">
-                        <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">  
+                        <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">
+                        
+                        
+                        <input type="button" value="Delete Account" id="deleteBtn" class="btn btn-default" onClick="alert(deleteAccount('<%= adviserid %>'))">
+                        
+                        <%
+                            }
+                        %>
                         </div>
                         <div class="centerthis">
 
