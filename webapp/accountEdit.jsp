@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="uta.cse4361.businessobjects.AdvisorAccount"%>
+<%@page import="uta.cse4361.businessobjects.Appointment"%> <%-- Abhijeet Chopra Mar 8 --%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,23 +14,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modify Appointment</title>
     </head>
-<%
-            int rank = -1;
-            int sessionid = -1;
-            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
-               response.sendRedirect("index.jsp");
-            }
-            if (!(session.getAttribute("id") == null)) {
-                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
-                }
-                if (!(session.getAttribute("rank") == null)) {
-                    rank = Integer.parseInt((String) session.getAttribute("rank"));
-            }
-            if(rank != 0 && rank != 1)
-                {
-                    response.sendRedirect("index.jsp");
-                }
-        %>
+    <%
+        int rank = -1;
+        int sessionid = -1;
+        if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
+            response.sendRedirect("index.jsp");
+        }
+        if (!(session.getAttribute("id") == null)) {
+            sessionid = Integer.parseInt((String) session.getAttribute("id"));
+        }
+        if (!(session.getAttribute("rank") == null)) {
+            rank = Integer.parseInt((String) session.getAttribute("rank"));
+        }
+        if (rank != 0 && rank != 1) {
+            response.sendRedirect("index.jsp");
+        }
+    %>
     <body>
         <jsp:include page="navigationbar.jsp" />
         <div id="wrapper">
@@ -39,27 +39,28 @@
                 <h3>Account Edit</h3>
                 <div>
                     <%
-
                         DatabaseManager dm = new DatabaseManager();
                         if (request.getParameter("email") == null || request.getParameter("email") == "" || request.getParameter("email").equals("")) {
                             response.sendRedirect("DeleteAccount.jsp");
-                        }
-                        else 
-                        {
+                        } else {
                             String emailParam = request.getParameter("email");
                             AdvisorAccount appt = dm.getAccount(emailParam);
                             String name = appt.getName();
                             String email = appt.getEmail();
                             String department = appt.getDepartment();
                             int userRank = appt.getRank();
-                            boolean descriptionSubmitted = !(request.getParameter("remove") == null || request.getParameter("remove") == "");
-                        
-                    %>
-
-                    <form name="edit" action="accountEdit.jsp" method="submit" role="form">
+                            //boolean descriptionSubmitted = !(request.getParameter("remove") == null || request.getParameter("remove") == "");
+                            int adviserid=appt.getID(); // Abhijeet Chopra Mar 8: to get ID of the record from DB
+%>i
+                    <!------- added form abhijeet 06-Mar-2016 ---->
+                    <form role="form" id="create"  onSubmit="return validate();" action="AccountModifyConfirmation.jsp" method="POST">
+                        <div class="form-group">
+                            <label for="userName" ID</label>
+                            <input class="form-control"  type="hidden" name="advisorid" size="50" id="userid" value = "<%= adviserid%>" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="userName">Name</label>
-                            <input class="form-control" type="text" name="userName" size="50" id="userName" value = "<%=name%>">
+                            <input class="form-control" type="text" name="advisorName" size="50" id="advisorName" value = "<%=name%>">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -67,55 +68,26 @@
                         </div>
                         <div class="form-group">
                             <label for="studentName">Department</label>
-                            <input class="form-control" type="text" name="department" size="50" id="department" value = "<%=department%>">
+                            <input class="form-control" type="text" name="dept" size="50" id="dept" value = "<%=department%>">
                         </div>
                         <div class="form-group">
                             <label for="userRank">Rank</label>
-                            <input class="form-control" type="text" name="userRank" size="50" id="userRank" value = "<%=userRank%>">
+                            <input class="form-control" type="text" name="rank" size="50" id="rank" value = "<%=userRank%>">
                         </div>
-                        
-                        <input type="hidden" value="false" name="remove">
-                        <input type="submit" value="Edit Account" id="submitBtn" class="btn btn-default">
-                    </form>
-                        
-                    <form method="submit" action="accountEdit.jsp">
-                        <%
-                            out.print("<input type='hidden' name='id' value='" + appt.getID() + "'>");
-                            out.print("<input type='hidden' name='email' value='" + appt.getEmail() + "'>");
-                        %>
 
-                        <input type="hidden" value="true" name="remove"><br>
-                        <input type="submit" value="Delete Account" id="deleteBtn" class="btn btn-default">
-                    </form>
-                        <%
-                            if (descriptionSubmitted) {
-                        %>
-                        <jsp:useBean id="macb" class="uta.cse4361.beans.ModifyAccountBean" scope="session"/>
-                        <jsp:setProperty name="macb" property="ID" value= '<%= appt.getID() %>'/>
-                        <jsp:setProperty name="macb" property="remove" value= '<%=Boolean.parseBoolean(request.getParameter("remove"))%>'/>
-                        <%
-                            if (Boolean.parseBoolean(request.getParameter("remove")) == false){
-                        %>
-                        <jsp:setProperty name="macb" property="name" value= '<%= request.getParameter("userName")%>'/>
-                        <jsp:setProperty name="macb" property="email" value= '<%= request.getParameter("email")%>'/>
-                        <jsp:setProperty name="macb" property="department" value= '<%= request.getParameter("department")%>'/>
-                        <jsp:setProperty name="macb" property="rank" value= '<%=Integer.parseInt(request.getParameter("userRank"))%>'/>
-                        
-                        
                         <%
                             }
-                        	String success = macb.modifyAccount();
-                                if (success.equals("")) {
-                                    response.sendRedirect("DeleteAccount.jsp");
-                                }
-                            }
-                        }
                         %>
-                        
-                </div>
+                        <!------- Abhijeet 06-Mar-2016------------------>
+                        <input type="submit" value="Update Account" id="submitBtn" class="btn btn-default">
+                        <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">  
+                        </div>
+                        <div class="centerthis">
 
-            </div> 
-        </div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
     </body>
     <jsp:include page="footer.jsp" />
     <script type="text/javascript" src="js/appointmentEdit.js"></script>

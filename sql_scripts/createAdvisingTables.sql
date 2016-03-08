@@ -98,3 +98,7 @@ VALUES ('1', 'New Student'),
 ('3', 'Drop Course'),
 ('4', 'Enroll'),
 ('5', 'Others');
+
+CREATE TABLE REPORT_BUGS(name varchar(20), email varchar(30), bugs varchar(50));
+
+CREATE TABLE FEEDBACK(name varchar(30), email varchar(50), remarks varchar(200));

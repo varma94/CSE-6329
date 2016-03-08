@@ -4,6 +4,9 @@
     Author     : Abhijeet Chopra
 --%>
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="dm" class="uta.cse4361.databases.DatabaseManager" scope="session"/>
 <!DOCTYPE html>
@@ -51,12 +54,8 @@
             <div id="accordion">
                 <h3>Feedback Form</h3>
                 <div>
-                    <!--
-                    !!!READ THIS TRACY!!!
-                    TODO : Change AccountConfirmation.jsp to something like feedbackConfirmation.jsp
-                    Upon filling the form and clicking the Submit button, the Name, Email and Feedback shall be stored in a table in the database.
-                    --> 
-                    <form role="form" id="create"  onSubmit="return validate();" action="AccountConfirmation.jsp" method="POST">
+
+                    <form role="form" id="create"  onSubmit="return validate();" action="" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" name="name" id="name" value="">
@@ -78,6 +77,69 @@
                 </div> 
             </div>
         </div>
+        
+ 
+   <%
+   String name = request.getParameter("name");
+   String email = request.getParameter("email");
+   String remarks = request.getParameter("remarks");
+   /* Create string of connection url within specified 
+   format with machine name, 
+    port number and database name. Here machine name id 
+    localhost and database name is student. */
+    String connectionURL = "jdbc:mysql://localhost:3306/ADVISING";
+          // declare a connection by using Connection interface 
+    Connection connection = null;
+        // declare object of Statement interface that uses for 
+   // executing sql statements.
+     PreparedStatement pstatement = null;
+         // Load JBBC driver "com.mysql.jdbc.Driver"
+     Class.forName("com.mysql.jdbc.Driver").newInstance();
+          int updateQuery = 0;
+     
+     	 // check if the text box is empty
+	 if(name!=null && email!=null && remarks!=null){
+	 		 // check if the text box having only blank spaces
+	     if(name!="" && email!="" && remarks!="") {
+	                 try {
+              /* Create a connection by using getConnection()
+              method that takes parameters of string type 
+              connection url, user name and password to connect 
+		to database. */
+              connection = DriverManager.getConnection
+              (connectionURL, "root", "root");
+                            // sql query to insert values in the secified table.
+              String queryString = "INSERT INTO FEEDBACK(name,email,remarks) VALUES (?, ?, ?)";
+              	      /* createStatement() is used for create statement
+              object that is used for 
+		sending sql statements to the specified database. */
+              pstatement = connection.prepareStatement(queryString);
+              pstatement.setString(1, name);
+			  pstatement.setString(2, email);
+			  pstatement.setString(3, remarks);
+              updateQuery = pstatement.executeUpdate();
+                            if (updateQuery != 0) { %>
+	           <br>
+	           <TABLE style="background-color: #E3E4FA;" 
+                   WIDTH="30%" border="1">
+		      <tr><th>Thank you for the feedback!
+                    </th></tr>
+		   </table>
+              <%
+              }
+            } 
+            catch (Exception ex) {
+            out.println("Unable to connect to batabase.");
+   
+               }
+            finally {
+                // close all the connections.
+                pstatement.close();
+                connection.close();
+            }
+	  }
+	}
+%>
     </body>
     <jsp:include page="footer.jsp" />
     <script type="text/javascript" src="js/CreateAccount.js"></script>

@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="help.jsp">Instructions</a>
+                <a href="instructions.jsp">Instructions</a>
             </li>
             
             <li>

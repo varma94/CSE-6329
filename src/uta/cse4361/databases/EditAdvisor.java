@@ -34,8 +34,8 @@ public class EditAdvisor extends RDBImplCommand {
             statement.setString(2, advisor.getName());
             statement.setString(3, advisor.getDepartment());
             statement.setInt(4, advisor.getRank());
-            statement.setInt(5, id);
-            statement.setInt(6, advisor.getLogNum());
+            statement.setInt(5, advisor.getLogNum()); // Abhijeet Chopra Mar 8: Changed sequence of SQL command
+            statement.setInt(6, id);
             statement.executeUpdate();
             processResult();
         } catch (SQLException e) {
